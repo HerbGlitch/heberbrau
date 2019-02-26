@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+
+body {
+  font-family: 'Amatic SC', cursive !important;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+p, a, label, span, b {
+  font-size: 1.3em;
+}
+
+button {
+  font-family: 'Amatic SC', cursive !important;
+  font-size: 1.6em !important;
+}

@@ -3,8 +3,42 @@
     Signed in as <strong><%= current_user.name %></strong>!
     <%= link_to "Sign out", signout_path, id: "sign_out" %>
   <% else %>
-    <h1>Login</h1>
-    <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-  <% end %>
+    <form>
+      <h1>Login</h1>
+      <div class="row">
+        <div class="col-md-4">
+          <a href="#" class="fb btn">
+            <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="#" class="twitter btn">
+            <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a href="/auth/google_oauth2" class="google btn"><i class="fa fa-google fa-fw">
+            </i> Login with Google
+          </a>
+        </div>
+      </div>
+      <div>
 
+        <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+
+          <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+      <div class="full-width">
+        <button type="register">Register</button>
+        <button type="submit">Login</button>
+      </div>
+    </form>
+  <% end %>
 </div>
