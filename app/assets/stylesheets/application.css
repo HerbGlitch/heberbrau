@@ -27,7 +27,8 @@ p, a, label, span, b {
   font-size: 1.3em;
 }
 
-button {
+button, .button {
   font-family: 'Amatic SC', cursive !important;
   font-size: 1.6em !important;
+  float: left;
 }
