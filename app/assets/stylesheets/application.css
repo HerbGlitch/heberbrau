@@ -17,6 +17,11 @@
 
 body {
   font-family: 'Amatic SC', cursive !important;
+  background-color: rgba(0,0,0,1) !important;
+  background-size: cover;
+  background-blend-mode: luminosity;
+  min-height: 100vh;
+  overflow-y: hidden;
 }
 
 h1 {
@@ -27,8 +32,29 @@ p, a, label, span, b {
   font-size: 1.3em;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #fff !important;
+}
+
 button, .button {
   font-family: 'Amatic SC', cursive !important;
   font-size: 1.6em !important;
   float: left;
+}
+
+.navbar-nav {
+  font-family: 'Amatic SC', cursive !important;
+}
+
+.navbar {
+  width: 100%;
+  background: transparent;
+  position: fixed !important;
+  top: 0;
+  color: #fff;
+  z-index: 2;
 }
