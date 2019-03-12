@@ -10,10 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_04_181410) do
+ActiveRecord::Schema.define(version: 2019_03_06_174340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "campaigns", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "dungeion_master_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dungeion_master_id"], name: "index_campaigns_on_dungeion_master_id"
+  end
+
+  create_table "dungeon_masters", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_dungeon_masters_on_user_id"
+  end
+
+  create_table "parties", force: :cascade do |t|
+    t.bigint "party_member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["party_member_id"], name: "index_parties_on_party_member_id"
+  end
+
+  create_table "party_members", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_party_members_on_user_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false

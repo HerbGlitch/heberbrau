@@ -36,7 +36,7 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+#right-nav-item:hover {
   color: #fff !important;
 }
 
@@ -44,6 +44,10 @@ button, .button {
   font-family: 'Amatic SC', cursive !important;
   font-size: 1.6em !important;
   float: left;
+}
+
+#nav-name {
+  color: #fff;
 }
 
 .navbar-nav {

@@ -1,0 +1,127 @@
+<section class="dm-background-darker">
+  <div class="row dm-campaings-box" style="width: 100%;">
+    <div class="col-md-3">
+      <div id="test" onclick="openModal('id01');" class="dm-create-card">
+        <a><h1>+</h1></a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="dm-create-card">
+        <a><h1>+</h1></a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="dm-create-card">
+        <a><h1>+</h1></a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="dm-create-card">
+        <a><h1>+</h1></a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="dm-create-card">
+        <a><h1>+</h1></a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="dm-create-card">
+        <a><h1>+</h1></a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="dm-create-card">
+        <a><h1>+</h1></a>
+      </div>
+    </div><div class="col-md-3">
+      <div class="dm-create-card">
+        <a><h1>+</h1></a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="dm-create-card">
+        <a><h1>+</h1></a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="dm-create-card">
+        <a><h1>+</h1></a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="dm-create-card">
+        <a><h1>+</h1></a>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="dm-create-card">
+        <a><h1>+</h1></a>
+      </div>
+    </div><div class="col-md-3">
+      <div class="dm-create-card">
+        <a><h1>+</h1></a>
+      </div>
+    </div>
+  </div>
+  <!--Modal box below-->
+  <div id="id01" class="dashboard-modal animate">
+    <form class="dashboard-modal-content">
+      <a id="dashboard-modal-exit" onclick="closeModal('id01')" style="color:#000;"><b>X</b></a>
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+        <button type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" onclick="closeModal('id01')" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+  </div>
+  <script>
+    navLogout = document.getElementById("right-nav-item")
+    navName = document.getElementById("nav-name")
+    test = document.getElementById("test")
+
+    var style = document.createElement('style');
+    style.type = 'text/css';
+    var keyFrames = '\
+    @keyframes zoom-location {\
+        from { transform: translate(beforePosX, beforePosY); }\
+        to { transform: translate(afterPoxX, afterPosY); }\
+
+    }\
+    @-moz-keyframes spinIt {\
+        100% {\
+            -webkit-transform: rotate(A_DYNAMIC_VALUE);\
+        }\
+    }';
+    style.innerHTML = keyFrames.replace(/A_DYNAMIC_VALUE/g, "180deg");
+    document.getElementsByTagName('head')[0].appendChild(style);
+
+    function openModal(modalID){
+      document.getElementById(modalID).style = "display: block; opacity: 1; left: "+test.offsetLeft+"; top: "+test.offsetTop+";";
+      document.getElementById(modalID).className = "dashboard-modal animate"
+      document.getElementById(modalID).style = "display: block; opacity: 1; left: 0; top: 0;';"
+      setTimeout(function() {navLogout.style = "display: none;";}, 600);
+      setTimeout(function() {navName.style = "display: none;";}, 600);
+    }
+
+    function closeModal(modalID){
+        document.getElementById(modalID).className = 'dashboard-modal unanimate'
+        document.getElementById(modalID).style = "display:block; opacity: 0; left: "+test.offsetLeft+"; top: "+test.offsetTop+";";
+        setTimeout(function() {document.getElementById(modalID).style = 'display: none;';}, 600);
+        navLogout.href = "/logout";
+        navLogout.style = 'display: initial;';
+        navName.href = "/dashboard";
+        navName.style = 'display: initial;';
+    }
+  </script>
+
+</section>
