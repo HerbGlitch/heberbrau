@@ -1,7 +1,7 @@
 class Users::OmniauthController < ApplicationController
   def sign_in_and_redirect(user)
     session[:user_id] = user.id
-    redirect_to authenticated_root_path
+    redirect_to root_path
   end
   # facebook callback
   def facebook

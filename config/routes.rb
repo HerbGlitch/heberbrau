@@ -1,19 +1,23 @@
 Rails.application.routes.draw do
-  get 'dm/index'
+  #login
   get '/login', to: 'login#index'
-  post '/login',   to: 'sessions#login'
   get '/register', to: 'login#index'
-  post '/register',  to: 'sessions#register'
+  #sessions
   get '/logout',  to: 'sessions#destroy'
-  get '/dashboard', to: 'dashboard#index'
+  post '/login',   to: 'sessions#login'
+  post '/register',  to: 'sessions#register'
+  #profile
+  get '/campaigns', to: 'profile#campaigns'
+  get '/friend_search', to: 'profile#friend_search'
+  #dm
   get '/dm', to: 'dm#index'
   get '/dm/campaings', to: 'dm#campaigns'
   get '/dm/store', to: 'dm#store'
+
   resources :users
+  resources :relationships, only: [:create, :destroy]
+
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth' }
-  authenticated :user do
-    root :to => 'dashboard#index', :as => "authenticated_root"
-  end
 
   root :to => 'home#show'
 end

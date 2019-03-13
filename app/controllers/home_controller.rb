@@ -1,15 +1,12 @@
 class HomeController < ApplicationController
   def show
     if current_user
-      render 'userindex'
+      render 'profile/index'
     else
       render 'index'
     end
   end
 
   def index
-  end
-
-  def userindex
   end
 end
