@@ -1,0 +1,178 @@
+.profile-background {
+  background-color: rgba(0,0,0,1);
+  background-image: url(asset-path('back_profile.jpg'));
+  background-image: linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.8)), url(asset-path('back_profile.jpg'));
+  background-size: cover;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  background-blend-mode: luminosity;
+  min-height: 100vh;
+}
+
+.profile-background-darker {
+  background-color: rgba(0,0,0,1);
+  background-image: url(asset-path('back_profile.jpg'));
+  background-image: linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,.9)), url(asset-path('back_profile.jpg'));
+  background-size: cover;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  background-blend-mode: luminosity;
+  min-height: 100vh;
+}
+
+.profile-campaings-box {
+  text-align: center;
+}
+
+.profile-h1 {
+  color: #fff;
+}
+
+.profile-create-card {
+  margin: 20px;
+  background-color: transparent;
+  color: #fff;
+  border: 1px dashed #fff;
+  transition: 1s;
+  cursor: pointer;
+  transform: scale(.9);
+  -webkit-transform: scale(.9);
+}
+
+.profile-create-card:hover {
+  border: 4px solid #fff;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+}
+
+.profile-create-card h1 {
+  font-size: 10em;
+}
+
+.profile-box {
+  width: 100%;
+  padding-top: 56.25%;
+  margin: 20px;
+  background-color: transparent;
+  color: #000;
+  border: 1px dashed #000;
+  transition: 1s;
+  cursor: pointer;
+  transform: scale(.95);
+  -webkit-transform: scale(.95);
+}
+
+.profile-box:hover {
+  border: 4px solid #000;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+  width: 100%;
+  font-size: 4em;
+  text-align: center;
+  padding-top: 28.125%;
+  padding-bottom: 28.125%;
+  margin: 20px;
+  background-color: transparent;
+  color: #000;
+  border: 1px dashed #000;
+  transition: 1s;
+  cursor: pointer;
+  transform: scale(.95);
+  -webkit-transform: scale(.95);
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  border: 4px solid #000;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+}
+
+.profile-input-padding input {
+  padding: 28.125% 0;
+  width: 100%;
+  margin: 0;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9;
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important;
+}
+
+input-focused {
+  border: 4px solid #000;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+}
+
+#profile-modal-exit {
+  color: #000;
+  float: right;
+  background: transparent;
+  font-size: 2em;
+  transition: .6s;
+  cursor: pointer;
+}
+
+#profile-modal-exit:hover {
+  color: #444 !important;
+}
+
+
+.profile-modal {
+  opacity: 0;
+  display: none;
+  position: fixed;
+  transition: .6s;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: transparent;
+}
+
+.profile-modal-content {
+  transition: 0;
+  margin: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  background-color: #fefefe;
+}
