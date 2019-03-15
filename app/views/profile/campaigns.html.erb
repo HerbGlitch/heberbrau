@@ -21,168 +21,125 @@
         </div>
         <div class="col-md-8">
           <input placeholder="Title" id="campaigns_title" name="campaigns[title]" type="text" class="profile-box" style="margin-top:30px; font-size: 2em;"/>
-          <div onclick="autocomplete(document.getElementById('dm'), countries);" class="profile-autocomplete" id="campaigns_dm">
+          <div onclick="autocomplete(document.getElementById('campaigns_dm'), users);" class="profile-autocomplete" id="campaigns-dm-parent">
             <input placeholder="dm" id="campaigns_dm" name="campaigns[dm]" data-role="tagsinput" type="text" class="profile-box" style="margin-top:30px; font-size: 2em;"/>
+          </div>
+          <div onclick="autocomplete(document.getElementById('party'), countries);" class="profile-autocomplete" id="campaigns_dm">
+            <input placeholder="party" id="campaigns_party" name="campaigns[party]" data-role="tagsinput" type="text" class="profile-box" style="margin-top:30px; font-size: 2em;"/>
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-12">
+          <textarea rows="8" placeholder="discription" id="campaigns_discription" name="campaigns[discription]" class="profile-box profile-textarea"></textarea>
+        </div>
+      </div>
+      <div class="full-width" id="buttons-top-space">
+        <button id="campaign-cancel" onclick="closeModal('id01')" type="button">Cancel</button>
+        <input class="button" name="commit" type="submit" value="Create" />
+      </div>
     </form>
   </div>
-  <script>
-    $('#dm').on({
-        focus: function () {
-            $(".bootstrap-tagsinput").addClass('prfile-input-focused');
-        },
+</section>
+
+<script>
+  $('#dm').on({
+      focus: function () {
+          $(".bootstrap-tagsinput").addClass('prfile-input-focused');
+      },
+  });
+</script>
+<script>
+  navLogout = document.getElementById("right-nav-item")
+  navName = document.getElementById("nav-name")
+  test = document.getElementById("test")
+
+  function openModal(modalID){
+    document.getElementById(modalID).style = "display: initial; opacity: 1;";
+    document.getElementById(modalID).className = "profile-modal";
+    document.getElementById(modalID).classList.add("animate");
+  }
+
+  function closeModal(modalID){
+      document.getElementById(modalID).className = 'profile-modal unanimate'
+      document.getElementById(modalID).style = "display:initial; opacity: 0;";
+      setTimeout(function() {document.getElementById(modalID).style = 'display: none;';}, 600);
+  }
+</script>
+<script>
+  function autocomplete(inp, arr) {
+    var currentFocus;
+    inp.addEventListener("input", function(e) {
+        var a, b, i, val = this.value;
+        closeAllLists();
+        if (!val) { return false;}
+        currentFocus = -1;
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        this.parentNode.appendChild(a);
+        for (i = 0; i < arr.length; i++) {
+          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            b = document.createElement("DIV");
+            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].substr(val.length);
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            b.addEventListener("click", function(e) {
+                inp.value = this.getElementsByTagName("input")[0].value;
+                closeAllLists();
+            });
+            a.appendChild(b);
+          }
+        }
     });
-  </script>
-  <script>
-    navLogout = document.getElementById("right-nav-item")
-    navName = document.getElementById("nav-name")
-    test = document.getElementById("test")
-
-    var inputs = document.querySelectorAll('.inputfile');
-
-    Array.prototype.forEach.call(inputs, function(input){
-      var label	 = input.nextElementSibling,
-      labelVal = label.innerHTML;
-      input.addEventListener('change', function(e){
-        var fileName = '';
-        if(this.files && this.files.length > 1){
-          fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
+    inp.addEventListener("keydown", function(e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          currentFocus++;
+          addActive(x);
+        } else if (e.keyCode == 38) {
+          currentFocus--;
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          e.preventDefault();
+          if (currentFocus > -1) {
+            if (x) x[currentFocus].click();
+          }
         }
-        else{
-          fileName = e.target.value.split('\\').pop();
-        }
-
-        if(fileName){
-          label.querySelector('span').innerHTML = fileName;
-        }
-        else{
-          label.innerHTML = labelVal;
-        }
-      });
     });
-
-    function createStyle(modalID) {
-      boxBounds = document.getElementById(modalID)
-      var rect = boxBounds.getBoundingClientRect();
-      console.log(rect.top, rect.right, rect.bottom, rect.left);
-      var style = document.createElement('style');
-      style.type = 'text/css';
-
-      var keyFrames = '\
-      @keyframes zoomLocation {\
-          from { transform: translate(beforePosX, beforePosY); }\
-          to { transform: translate(afterPoxX, afterPosY); }\
-      }\
-      @-webkit-keyframes zoomLocation {\
-              from { -webkit-transform: translate(beforePosX, beforePosY); }\
-              to { -webkit-transform: translate(afterPoxX, afterPosY); }\
-      }';
-
-      keyFrames = keyFrames.replace(/beforePosX/g, rect.top);
-      keyFrames = keyFrames.replace(/beforePosY/g, rect.left);
-      keyFrames = keyFrames.replace(/beforePosX/g, "50%");
-      keyFrames = keyFrames.replace(/beforePosY/g, "50%");
-
-      style.innerHTML = keyFrames;
-      document.getElementsByTagName('head')[0].appendChild(style);
+    function addActive(x) {
+      if (!x) return false;
+      removeActive(x);
+      if (currentFocus >= x.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = (x.length - 1);
+      x[currentFocus].classList.add("autocomplete-active");
     }
-
-    function openModal(modalID){
-      document.getElementById(modalID).style = "display: initial; opacity: 1;";
-      document.getElementById(modalID).className = "profile-modal animate"
-      document.getElementById(modalID).style = "display: initial; opacity: 1;";
-      setTimeout(function() {navLogout.style = "display: none;";}, 600);
-      setTimeout(function() {navName.style = "display: none;";}, 600);
-    }
-
-    function closeModal(modalID){
-        document.getElementById(modalID).className = 'profile-modal unanimate'
-        document.getElementById(modalID).style = "display:initial; opacity: 0;";
-        setTimeout(function() {document.getElementById(modalID).style = 'display: none;';}, 600);
-        navLogout.href = "/logout";
-        navLogout.style = 'display: initial;';
-        navName.href = "/";
-        navName.style = 'display: initial;';
-    }
-
-    function autocomplete(inp, arr) {
-      var currentFocus;
-      inp.addEventListener("input", function(e) {
-          var a, b, i, val = this.value;
-          closeAllLists();
-          if (!val) { return false;}
-          currentFocus = -1;
-          a = document.createElement("DIV");
-          a.setAttribute("id", this.id + "autocomplete-list");
-          a.setAttribute("class", "autocomplete-items");
-          this.parentNode.appendChild(a);
-          for (i = 0; i < arr.length; i++) {
-            if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-              b = document.createElement("DIV");
-              b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-              b.innerHTML += arr[i].substr(val.length);
-              b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-              b.addEventListener("click", function(e) {
-                  inp.value = this.getElementsByTagName("input")[0].value;
-                  closeAllLists();
-              });
-              a.appendChild(b);
-            }
-          }
-      });
-      inp.addEventListener("keydown", function(e) {
-          var x = document.getElementById(this.id + "autocomplete-list");
-          if (x) x = x.getElementsByTagName("div");
-          if (e.keyCode == 40) {
-            currentFocus++;
-            addActive(x);
-          } else if (e.keyCode == 38) {
-            currentFocus--;
-            addActive(x);
-          } else if (e.keyCode == 13) {
-            e.preventDefault();
-            if (currentFocus > -1) {
-              if (x) x[currentFocus].click();
-            }
-          }
-      });
-      function addActive(x) {
-        if (!x) return false;
-        removeActive(x);
-        if (currentFocus >= x.length) currentFocus = 0;
-        if (currentFocus < 0) currentFocus = (x.length - 1);
-        x[currentFocus].classList.add("autocomplete-active");
+    function removeActive(x) {
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove("autocomplete-active");
       }
-      function removeActive(x) {
-        for (var i = 0; i < x.length; i++) {
-          x[i].classList.remove("autocomplete-active");
+    }
+    function closeAllLists(elmnt) {
+      var x = document.getElementsByClassName("autocomplete-items");
+      for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+          x[i].parentNode.removeChild(x[i]);
         }
       }
-      function closeAllLists(elmnt) {
-        var x = document.getElementsByClassName("autocomplete-items");
-        for (var i = 0; i < x.length; i++) {
-          if (elmnt != x[i] && elmnt != inp) {
-            x[i].parentNode.removeChild(x[i]);
-          }
-        }
-      }
-      document.addEventListener("click", function (e) {
-          closeAllLists(e.target);
-      });
     }
+    document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+    });
+  }
 
-    var countries = [
-      <% if @users.any? %>
-        <% @users.each do |user| %>
-          <% if current_user.following?(user) %>
-            "<%=user.email%>",
-          <% end %>
+  var users = [
+    <% if @users.any? %>
+      <% @users.each do |user| %>
+        <% if current_user.following?(user) %>
+          "<%=user.email%>",
         <% end %>
       <% end %>
-    ];
-
-
-  </script>
-</section>
+    <% end %>
+  ];
+</script>
