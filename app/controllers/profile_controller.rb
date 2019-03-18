@@ -5,6 +5,9 @@ class ProfileController < ApplicationController
   def profile
   end
 
+  def edit
+  end
+
   def campaigns
     @users = User.all
   end

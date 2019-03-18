@@ -19,8 +19,6 @@
       <nav id="navbar" class="navbar navbar-expand-md navbar-dark">
         <% if current_user %>
         <a id="sidebarCollapse" class="nav-header" style="cursor: pointer;"><%= current_user.email %></a>
-        <% else %>
-        <a id="sidebarCollapse" class="nav-header" style="cursor: pointer;">Home</a>
         <% end %>
         <div class="navbar-collapse collapse" id="collapsingNavbar">
           <ul class="navbar-nav"></ul>
@@ -33,20 +31,22 @@
           <% end %>
         </div>
       </nav>
-      <nav id="sidebar">
-        <div class="sidebar-header">
-          <div class="nav-spacing">
+      <% if current_user %>
+        <nav id="sidebar">
+          <div class="sidebar-header">
+            <div class="nav-spacing">
+            </div>
+            <a class="nav-link-a" href="/"><h3>Profile</h3></a>
+            <a class="nav-link-a" href="/edit"><h3>Edit Profile</h3></a>
+            <a class="nav-link-a" href="/campaigns"><h3>Campaigns</h3></a>
+            <a class="nav-link-a" href="/partys"><h3>Partys</h3></a>
+            <a class="nav-link-a" href="/friend_search"><h3>Friends</h3></a>
           </div>
-          <a class="nav-link-a" href="/"><h3>Profile</h3></a>
-          <a class="nav-link-a" href="/edit"><h3>Edit Profile</h3></a>
-          <a class="nav-link-a" href="/campaigns"><h3>Campaigns</h3></a>
-          <a class="nav-link-a" href="/partys"><h3>Partys</h3></a>
-          <a class="nav-link-a" href="/friend_search"><h3>Friends</h3></a>
-        </div>
-      </nav>
+        </nav>
+      <% end %>
     </div>
-      <!-- <a id="right-nav-item" href="/logout">logout</a> -->
-      <%= yield %>
+    <%= yield %>
+    <% if current_user %>
       <script type="text/javascript">
         $(document).ready(function () {
           $('#sidebarCollapse').on('click', function () {
@@ -56,5 +56,6 @@
           });
         });
       </script>
+    <% end %>
   </body>
 </html>
