@@ -9,10 +9,10 @@
   min-height: 100vh;
 }
 
-.profile-background-darker {
+.profile-background-u {
   background-color: rgba(0,0,0,1);
-  background-image: url(asset-path('back_profile.jpg'));
-  background-image: linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,.9)), url(asset-path('back_profile.jpg'));
+  background-image: url(asset-path('back_profile_u.jpg'));
+  background-image: linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.8)), url(asset-path('back_profile_u.jpg'));
   background-size: cover;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
@@ -20,10 +20,21 @@
   min-height: 100vh;
 }
 
-.profile-background-u {
+.profile-background-f {
   background-color: rgba(0,0,0,1);
-  background-image: url(asset-path('back_profile_u.jpg'));
-  background-image: linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.8)), url(asset-path('back_profile_u.jpg'));
+  background-image: url(asset-path('back_friend_search.jpg'));
+  background-image: linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,.5)), url(asset-path('back_friend_search.jpg'));
+  background-size: cover;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  background-blend-mode: luminosity;
+  min-height: 100vh;
+}
+
+.profile-background-c {
+  background-color: rgba(0,0,0,1);
+  background-image: url(asset-path('back_campaigns.jpg'));
+  background-image: linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,.5)), url(asset-path('back_campaigns.jpg'));
   background-size: cover;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
