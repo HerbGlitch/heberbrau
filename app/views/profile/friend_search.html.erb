@@ -1,29 +1,29 @@
 <% provide(:title, 'All users') %>
 <section class="profile-background-darker">
-  <div class="nav-spacing">
-  </div>
-  <div class="row profile-campaings-box">
-    <% if @users.any? %>
-      <% @users.each do |user| %>
-        <% if current_user != user %>
-          <% if !current_user.following?(user) %>
-            <div class="col-md-3">
-              <%= form_for(current_user.active_relationships.build) do |f| %>
-                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                <%= hidden_field_tag :followed_id, user.id %>
-                <div style="font-size: 2em;" class="profile-input-padding"><%= f.submit "Follow " + user.email, class: "profile-create-card" %></div>
-              <% end %>
-            </div>
-          <% else %>
-            <div class="col-md-3">
-              <%= form_for(current_user.active_relationships.find_by(followed_id: user.id), html: { method: :delete }, remote: true) do |f| %>
-                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                <div style="font-size: 2em;" class="profile-input-padding"><%= f.submit "Unfollow " + user.email, class: "profile-create-card" %></div>
-              <% end %>
-            </div>
+  <div id="content" class="nav-spacing">
+    <div class="row profile-campaings-box">
+      <% if @users.any? %>
+        <% @users.each do |user| %>
+          <% if current_user != user %>
+            <% if !current_user.following?(user) %>
+              <div class="col-md-3">
+                <%= form_for(current_user.active_relationships.build) do |f| %>
+                  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                  <%= hidden_field_tag :followed_id, user.id %>
+                  <div style="font-size: 2em;" class="profile-input-padding"><%= f.submit "Follow " + user.email, class: "profile-create-card" %></div>
+                <% end %>
+              </div>
+            <% else %>
+              <div class="col-md-3">
+                <%= form_for(current_user.active_relationships.find_by(followed_id: user.id), html: { method: :delete }, remote: true) do |f| %>
+                  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                  <div style="font-size: 2em;" class="profile-input-padding"><%= f.submit "Unfollow " + user.email, class: "profile-create-card" %></div>
+                <% end %>
+              </div>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </section>
