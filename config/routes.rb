@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   post '/login',   to: 'sessions#login'
   post '/register',  to: 'sessions#register'
   #profile
-  get '/profile', to: 'profile#profile'
-  get '/edit', to: 'profile#edit'
   get '/campaigns', to: 'profile#campaigns'
   get '/friend_search', to: 'profile#friend_search'
   #dm

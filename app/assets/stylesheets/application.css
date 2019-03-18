@@ -236,6 +236,22 @@ a[aria-expanded="true"]::before {
   width: 100%;
 }
 
+.style-white {
+  color: #fff !important;
+}
+
+.style-black {
+  color: #000 !important;
+}
+
+.border-white {
+  border-color: #fff !important;
+}
+
+.border-black {
+  border-color: #000 !important;
+}
+
 @media (max-width: 768px) {
     #sidebar {
         margin-left: -250px;

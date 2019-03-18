@@ -1,5 +1,33 @@
-<section class="profile-background">
+<section class="profile-background-u">
   <div id="content" class="nav-spacing">
+    <div class="profile-edit-modal">
+      <form class="profile-edit-modal-content">
+        <!-- <div style="width:100%;">
+          <a id="profile-edit-modal-exit" onclick="closeModal('id01')" style="color:#000;"><b>X</b></a>
+        </div> -->
+        <div class="row">
+          <div class="col-md-4">
+            <input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple />
+            <label class="style-white border-white" for="file">Choose an image</label>
+          </div>
+          <div class="col-md-8">
+            <div class="row col-md-12">
+              <div class="col-md-6">
+                <input placeholder="Username" id="campaigns_title" name="campaigns[title]" type="text" class="profile-box style-white border-white" style="margin-top:30px; font-size: 2em;"/>
+              </div>
+              <div class="col-md-6">
+                <input placeholder="<%= current_user.email %>" id="campaigns_title" name="campaigns[title]" type="text" class="profile-box style-white border-white" style="margin-top:30px; font-size: 2em;"/>
+              </div>
+            </div>
+            <div class="row col-md-12" style="padding-left: 5px;">
+              <div class="col-md-12" style="padding-left: 0;">
+                <textarea rows="10" placeholder="discription" id="campaigns_discription" name="campaigns[discription]" class="profile-box profile-textarea style-white border-white"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
     <div class="row profile-campaings-box">
       <h1 class="profile-h1 col-md-12">Campaings</h1>
       <div class="col-md-3">
