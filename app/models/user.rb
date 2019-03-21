@@ -14,7 +14,7 @@ class User < ApplicationRecord
   end
 
   def self.register(data)
-    where(provider: 'site', uid: User.maximum(:id).next).first_or_create do | user |
+    where(provider: data[:provider], uid: data[:uid]).first_or_create do | user |
       user.email = data[:email]
       user.password = data[:password]
     end

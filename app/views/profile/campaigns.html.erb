@@ -2,18 +2,26 @@
   <div id="content" class="nav-spacing">
     <h1 style="text-align: center;" class="profile-h1 col-md-12">Campaings</h1>
     <div class="row profile-campaings-box">
+      <% if !@campaigns.nil? %>
+        <% @campaigns.each do |campaign| %>
+          <div class="col-md-3">
+            <div id="test" class="profile-create-card">
+              <a href="/campaign/<%= campaign.slot %>"><h1><%= campaign.name %></h1></a>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
       <div class="col-md-3">
-        <div id="test" onclick="openModal('id01');" class="profile-create-card">
+        <div id="test" onclick="openModal('create_campaign');" class="profile-create-card">
           <a><h1>+</h1></a>
         </div>
       </div>
     </div>
   </div>
-  <!--Modal box below-->
-  <div id="id01" class="profile-modal animate">
-    <form class="profile-modal-content">
+  <div id="create_campaign" class="profile-modal animate">
+    <%= form_tag("/create_campaign", method: "post", class: "profile-modal-content") do %>
       <div style="width:100%;">
-        <a id="profile-modal-exit" onclick="closeModal('id01')" style="color:#000;"><b>X</b></a>
+        <a id="profile-modal-exit" onclick="closeModal('create_campaign')" style="color:#000;"><b>X</b></a>
       </div>
       <div class="row">
         <div class="col-md-4">
@@ -21,7 +29,7 @@
           <label for="file">Choose an image</label>
         </div>
         <div class="col-md-8">
-          <input placeholder="Title" id="campaigns_title" name="campaigns[title]" type="text" class="profile-box" style="margin-top:30px; font-size: 2em;"/>
+          <%= text_field_tag :name, "", class: 'profile-box', placeholder: "Title", style: "margin-top:30px; font-size: 2em;" %>
           <div onclick="autocomplete(document.getElementById('campaigns_dm'), users);" class="profile-autocomplete" id="campaigns-dm-parent">
             <input placeholder="dm" id="campaigns_dm" name="campaigns[dm]" data-role="tagsinput" type="text" class="profile-box" style="margin: 0; font-size: 2em;"/>
           </div>
@@ -39,7 +47,7 @@
         <button id="campaign-cancel" onclick="closeModal('id01')" type="button">Cancel</button>
         <input class="button" name="commit" type="submit" value="Create" />
       </div>
-    </form>
+    <% end %>
   </div>
 </section>
 

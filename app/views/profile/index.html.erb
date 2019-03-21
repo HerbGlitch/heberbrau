@@ -2,7 +2,7 @@
   <div id="content" class="nav-spacing">
     <div class="profile-edit-modal">
       <h1 style="text-align: center;" class="profile-h1 col-md-12">Profile</h1>
-      <form class="profile-edit-modal-content">
+      <%= form_tag("/update_user", method: "post") do %>
         <div class="row">
           <div class="col-md-4">
             <input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple />
@@ -11,20 +11,37 @@
           <div class="col-md-8">
             <div class="row col-md-12">
               <div class="col-md-6">
-                <input placeholder="Username" id="profile_username" name="profile[username]" type="text" class="profile-box style-white border-white" style="margin-top:30px; font-size: 2em;"/>
+                <% if current_user.username != "" %>
+                  <%= text_field_tag :username, current_user.username, class: 'profile-box style-white border-white', placeholder: current_user.username, value: current_user.username, style: "margin-top:30px; font-size: 2em;" %>
+                <% else %>
+                  <%= text_field_tag :username, "Username", class: 'profile-box style-white border-white', placeholder: "Username", value: "", style: "margin-top:30px; font-size: 2em;" %>
+                <% end %>
               </div>
               <div class="col-md-6">
-                <input placeholder="<%= current_user.email %>" id="profile_email" name="profile[email]" type="email" class="profile-box style-white border-white" style="margin-top:30px; font-size: 2em;"/>
+                <% if current_user.email != "" %>
+                  <%= email_field_tag :email, current_user.email, class: 'profile-box style-white border-white', placeholder: current_user.email, value: current_user.email, style: "margin-top:30px; font-size: 2em;" %>
+                <% else %>
+                  <%= email_field_tag :email, current_user.email, class: 'profile-box style-white border-white', placeholder: "Email", value: "", style: "margin-top:30px; font-size: 2em;" %>
+                <% end %>
               </div>
             </div>
             <div class="row col-md-12" style="padding-left: 5px;">
               <div class="col-md-12" style="padding-left: 0;">
-                <textarea rows="10" placeholder="discription" id="profile_discription" name="profile[discription]" class="profile-box profile-textarea style-white border-white"></textarea>
+                <% if current_user.discription != "" %>
+                  <%= text_area_tag :discription, current_user.discription, rows: 8, maxlength: 10000, class: 'profile-box profile-textarea style-white border-white', placeholder: current_user.discription, style: "resize: none;" %>
+                <% else %>
+                  <%= text_area_tag :discription, "", rows: 8, maxlength: 10000, class: 'profile-box profile-textarea style-white border-white', placeholder: "Discription", style: "resize: none;" %>
+                <% end %>
+              </div>
+              <div class="col-md-10">
+              </div>
+              <div class="col-md-2">
+                <%= submit_tag("Update", class: "button", style: "width: calc(100% - 15px)")%>
               </div>
             </div>
           </div>
         </div>
-      </form>
+      <% end %>
     </div>
     <div class="row profile-campaings-box">
       <h1 class="profile-h1 col-md-12">Campaings</h1>

@@ -2,7 +2,7 @@
   <div class="flip-box">
     <div id="flip-box-inner" class="flip-box-inner">
       <div class="flip-box-front" id="flip-box-front">
-        <form accept-charset="UTF-8" action="/login" method="post">
+        <%= form_tag("/login", method: "post") do %>
           <h1>Login</h1>
           <div class="row">
             <div class="col-md-4">
@@ -22,14 +22,10 @@
             </div>
           </div>
           <div>
-            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-
             <label for="session_email">Email</label>
-            <input class="session_email" id="session_email" name="session[email]" type="text" />
-
+            <%= text_field_tag :email, "" %>
             <label for="session_password">Password</label>
-            <input id="session_password" name="session[password]" type="password" />
-
+            <%= text_field_tag :password, "" %>
               <label>
               <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
@@ -43,27 +39,26 @@
             <button id="register" type="button">Register</button>
             <button name="commit" type="submit" value="Log in">Login</button>
           </div>
-        </form>
+        <% end %>
       </div>
       <div class="flip-box-back" id="flip-box-back">
-        <form accept-charset="UTF-8" action="/register" class="new_user" id="new_user" method="post">
-          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= form_tag("/register", method: "post") do %>
           <h1>Register</h1>
           <div>
             <label for="user_email">Email</label>
-            <input id="user_email" name="user[email]" type="email" />
+            <%= text_field_tag :email, "" %>
 
             <label for="user_password">Password</label>
-            <input id="user_password" name="user[password]" type="password" />
+            <%= password_field_tag :password, "" %>
 
             <label for="user_password_confirmation">Confirmation</label>
-            <input id="user_password_confirmation" name="user[password_confirmation]" type="password" />
+            <%= password_field_tag :password_confirmation, "" %>
           </div>
           <div class="full-width" id="buttons-top-space">
             <button id="user-login" type="button">User Login</button>
             <input class="button" name="commit" type="submit" value="register" />
           </div>
-        </form>
+        <% end %>
       </div>
     </div>
   </div>

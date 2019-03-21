@@ -225,6 +225,34 @@ a[aria-expanded="true"]::before {
   content: '\e260';
 }
 
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+}
+
+.button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+}
+
+.button:hover{
+  opacity: 0.8;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
 #content {
   width: calc(100% - 250px);
   transition: all 0.3s;

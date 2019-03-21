@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_174340) do
+ActiveRecord::Schema.define(version: 2019_03_19_221735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,17 +18,19 @@ ActiveRecord::Schema.define(version: 2019_03_06_174340) do
   create_table "campaigns", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.bigint "dungeion_master_id"
+    t.bigint "game_dm_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["dungeion_master_id"], name: "index_campaigns_on_dungeion_master_id"
+    t.integer "creator"
+    t.integer "slot"
+    t.index ["game_dm_id"], name: "index_campaigns_on_game_dm_id"
   end
 
-  create_table "dungeon_masters", force: :cascade do |t|
+  create_table "game_dm", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_dungeon_masters_on_user_id"
+    t.index ["user_id"], name: "index_game_dm_on_user_id"
   end
 
   create_table "parties", force: :cascade do |t|
@@ -71,6 +73,10 @@ ActiveRecord::Schema.define(version: 2019_03_06_174340) do
     t.datetime "updated_at", null: false
     t.string "provider", limit: 50, default: "", null: false
     t.string "uid", limit: 500, default: "", null: false
+    t.string "username", limit: 50, default: "", null: false
+    t.string "discription", limit: 10000, default: "", null: false
+    t.integer "campaigns_slot"
+    t.boolean "sidebar_active", default: true
   end
 
 end

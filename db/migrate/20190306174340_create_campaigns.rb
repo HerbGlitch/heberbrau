@@ -1,6 +1,6 @@
 class CreateCampaigns < ActiveRecord::Migration[5.2]
   def change
-    create_table :dungeon_masters do |t|
+    create_table :game_dm do |t|
       t.references :user
 
       t.timestamps
@@ -21,7 +21,7 @@ class CreateCampaigns < ActiveRecord::Migration[5.2]
     create_table :campaigns do |t|
       t.string :name
       t.text :description
-      t.belongs_to :dungeion_master, index: true
+      t.belongs_to :game_dm, index: true
 
       t.timestamps
     end

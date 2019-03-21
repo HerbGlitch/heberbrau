@@ -18,7 +18,11 @@
     <div class="wrapper">
       <nav id="navbar" class="navbar navbar-expand-md navbar-dark">
         <% if current_user %>
-        <a id="sidebarCollapse" class="nav-header" style="cursor: pointer;"><%= current_user.email %></a>
+          <% if current_user.username != "" %>
+            <%= link_to current_user.username, "/sidebar_toggle", id: "sidebarCollapse", class: "nav-header style-white", style: "cursor: pointer", remote: true %>
+          <% else %>
+            <%= link_to current_user.email, "/sidebar_toggle", id: "sidebarCollapse", class: "nav-header style-white", style: "cursor: pointer", remote: true %>
+          <% end %>
         <% end %>
         <div class="navbar-collapse collapse" id="collapsingNavbar">
           <ul class="navbar-nav"></ul>
@@ -47,6 +51,9 @@
     <%= yield %>
     <% if current_user %>
       <script type="text/javascript">
+        <% if !current_user.sidebar_active %>
+          $('#sidebar, #content').toggleClass('active');
+        <% end %>
         $(document).ready(function () {
           $('#sidebarCollapse').on('click', function () {
             $('#sidebar, #content').toggleClass('active');
