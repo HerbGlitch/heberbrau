@@ -1,0 +1,2 @@
+class UpdateUserSidebar < ApplicationRecord
+end
