@@ -23,7 +23,7 @@ Rails.application.configure do
   config.serve_static_files = true
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
-  RAILS_ENV=production rake assets:precompile
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
