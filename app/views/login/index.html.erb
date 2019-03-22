@@ -25,7 +25,7 @@
             <label for="session_email">Email</label>
             <%= text_field_tag :email, "" %>
             <label for="session_password">Password</label>
-            <%= text_field_tag :password, "" %>
+            <%= password_field_tag :password, "" %>
               <label>
               <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
@@ -47,10 +47,8 @@
           <div>
             <label for="user_email">Email</label>
             <%= text_field_tag :email, "" %>
-
             <label for="user_password">Password</label>
             <%= password_field_tag :password, "" %>
-
             <label for="user_password_confirmation">Confirmation</label>
             <%= password_field_tag :password_confirmation, "" %>
           </div>
@@ -62,7 +60,6 @@
       </div>
     </div>
   </div>
-
   <script>
     register = document.getElementById("register");
     register.onclick = function() {

@@ -33,8 +33,6 @@ gem 'omniauth-github'
 gem 'omniauth-twitter'
 gem 'activerecord-session_store'
 
-gem 'rails_12factor', group: :production
-
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

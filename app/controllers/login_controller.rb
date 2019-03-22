@@ -17,7 +17,7 @@ class LoginController < ApplicationController
       end
     else
       puts "what?!?!?"
-      redirect_to "/login"
+      redirect_to "/login-register"
     end
   end
 

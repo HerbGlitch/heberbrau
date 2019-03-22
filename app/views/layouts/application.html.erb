@@ -19,10 +19,9 @@
       <nav id="navbar" class="navbar navbar-expand-md navbar-dark">
         <% if current_user %>
           <% if current_user.username != "" %>
-            <%= link_to current_user.username, show_message_path, remote: true %>
-            <a id="sidebarCollapse" class="nav-header" style="cursor: pointer;"><%= current_user.username %></a>
+            <%= link_to current_user.username, "/sidebar_toggle", id: "sidebarCollapse", class: "nav-header style-white", style: "cursor: pointer", remote: true %>
           <% else %>
-            <a id="sidebarCollapse" class="nav-header" style="cursor: pointer;"><%= current_user.email %></a>
+            <%= link_to current_user.email, "/sidebar_toggle", id: "sidebarCollapse", class: "nav-header style-white", style: "cursor: pointer", remote: true %>
           <% end %>
         <% end %>
         <div class="navbar-collapse collapse" id="collapsingNavbar">
