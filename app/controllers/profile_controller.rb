@@ -2,6 +2,9 @@ class ProfileController < ApplicationController
   def index
   end
 
+  def profile
+  end
+
   def campaigns
     @users = User.all
     @campaigns = Campaign.where(:creator=>current_user.id)

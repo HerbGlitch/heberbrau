@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   #sessions
   get '/logout',  to: 'sessions#destroy'
   #profile
+  get '/profile/:id', to: 'profile#profile'
   get '/campaigns', to: 'profile#campaigns'
   get '/campaign/:id', to: 'profile#campaign'
   get '/friend_search', to: 'profile#friend_search'
