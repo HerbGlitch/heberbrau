@@ -18,7 +18,6 @@ class ProfileController < ApplicationController
     end
     @campaign = Campaign.new(name: params[:name], creator: current_user.id, slot: current_user.campaigns_slot)
     if @campaign.save
-
       redirect_to "/campaigns"
     else
       puts "dang"

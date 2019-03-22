@@ -14,9 +14,11 @@ class LoginController < ApplicationController
         puts @user.id
         session[:user_id] = @user.id
         redirect_to root_path
+      else
+        puts "WHYYYY"
+        redirect_to "/login-register"
       end
     else
-      puts "what?!?!?"
       redirect_to "/login-register"
     end
   end

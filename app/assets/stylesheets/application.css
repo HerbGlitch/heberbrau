@@ -51,6 +51,11 @@ button, .button {
   float: left;
 }
 
+#sidebar .nav-spacing {
+  margin-top: 4em;
+  width: 100%;
+}
+
 #nav-name {
   color: #fff;
   font-size: 2em;
@@ -74,11 +79,6 @@ button, .button {
   top: 0;
   color: #fff;
   z-index: 3;
-}
-
-.nav-spacing {
-  margin-top: 4em;
-  width: 100%;
 }
 
 .row {
@@ -295,6 +295,10 @@ button:hover {
     }
     #sidebarCollapse span {
         display: none;
+    }
+    .nav-spacing {
+      margin-top: 4em;
+      width: 100%;
     }
 }
 
