@@ -19,7 +19,7 @@
     </div>
   </div>
   <div id="create_campaign" class="profile-modal animate">
-    <%= form_tag("/create_campaign", method: "post", class: "profile-modal-content") do %>
+    <%= form_tag("/create_campaign", method: "post", class: "profile-modal-content", autocomplete: "off") do %>
       <div style="width:100%;">
         <a id="profile-modal-exit" onclick="closeModal('create_campaign')" style="color:#000;"><b>X</b></a>
       </div>

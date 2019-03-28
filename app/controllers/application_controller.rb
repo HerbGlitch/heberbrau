@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  # before_action :authenticate_request
+  # attr_reader :current_user
   protect_from_forgery with: :exception
   helper_method :current_user
 
@@ -21,4 +23,10 @@ class ApplicationController < ActionController::Base
   def new_session_path(scope)
     new_user_session_path
   end
+
+  # private
+  #   def authenticate_request
+  #     @current_user = AuthorizeApiRequest.call(request.headers).result
+  #     render json: { error: 'Not Authorized' }, status: 401 unless @current_user
+  #   end
 end

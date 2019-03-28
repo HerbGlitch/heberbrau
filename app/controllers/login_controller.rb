@@ -7,7 +7,11 @@ class LoginController < ApplicationController
       new_params = {}
       new_params[:email] = params[:email]
       new_params[:password] = params[:password]
-      new_params[:uid] = User.maximum(:id).next
+      begin
+        new_params[:uid] = User.maximum(:id).next
+      rescue
+        new_params[:uid] = 1
+      end
       new_params[:provider] = "site"
       @user = User.register(new_params)
       if @user.persisted?

@@ -59,15 +59,17 @@
       <div class="row profile-campaings-box">
         <h1 class="profile-h1 col-md-12">Friends</h1>
         <% @users.each do |user| %>
-          <div class="col-md-3">
-            <div class="profile-create-card">
-              <% if user.username != "" %>
-                <a href="/profile/<%= user.id %>" class="style-white" style="font-size: .3em"><h1><%= user.username %></h1></a>
-              <% else %>
-                <a href="/profile/<%= user.id %>" class="style-white" style="font-size: .3em"><h1><%= user.email %></h1></a>
-              <% end %>
+          <% if user != current_user %>
+            <div class="col-md-3">
+              <div class="profile-create-card">
+                <% if user.username != "" %>
+                  <a href="/profile/<%= user.id %>" class="style-white" style="font-size: .3em"><h1><%= user.username %></h1></a>
+                <% else %>
+                  <a href="/profile/<%= user.id %>" class="style-white" style="font-size: .3em"><h1><%= user.email %></h1></a>
+                <% end %>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     <% end %>

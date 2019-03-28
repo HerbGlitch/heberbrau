@@ -32,7 +32,8 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
 gem 'activerecord-session_store'
-
+gem 'jwt'
+gem 'simple_command'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

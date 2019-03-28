@@ -17,11 +17,20 @@ Rails.application.routes.draw do
   get '/dm', to: 'dm#index'
   get '/dm/campaings', to: 'dm#campaigns'
   get '/dm/store', to: 'dm#store'
+  #api auth
+  post 'authenticate', to: 'authentication#authenticate'
 
   resources :users
   resources :relationships, only: [:create, :destroy]
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth' }
+
+  namespace 'api' do
+    namespace 'v1' do
+      resources :users
+      resources :campaigns
+    end
+  end
 
   root :to => 'home#show'
 end

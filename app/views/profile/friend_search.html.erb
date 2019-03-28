@@ -1,4 +1,3 @@
-<% provide(:title, 'All users') %>
 <section class="profile-background-f">
   <div id="content" class="nav-spacing">
     <h1 style="text-align: center;" class="profile-h1 col-md-12 style-white">Friends</h1>
@@ -11,14 +10,14 @@
                 <%= form_for(current_user.active_relationships.build) do |f| %>
                   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
                   <%= hidden_field_tag :followed_id, user.id %>
-                  <div style="font-size: 2em;" class="profile-input-padding"><%= f.submit "Follow " + user.email, class: "profile-create-card" %></div>
+                  <div style="font-size: 2em;" class="profile-input-padding"><%= f.submit "Follow " + user.email, class: "profile-create-card", remote: true %></div>
                 <% end %>
               </div>
             <% else %>
               <div class="col-md-3">
                 <%= form_for(current_user.active_relationships.find_by(followed_id: user.id), html: { method: :delete }, remote: true) do |f| %>
                   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                  <div style="font-size: 2em;" class="profile-input-padding"><%= f.submit "Unfollow " + user.email, class: "profile-create-card" %></div>
+                  <div style="font-size: 2em;" class="profile-input-padding"><%= f.submit "Unfollow " + user.email, class: "profile-create-card", remote: true %></div>
                 <% end %>
               </div>
             <% end %>

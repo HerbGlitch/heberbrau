@@ -3,14 +3,16 @@ class ProfileController < ApplicationController
   end
 
   def profile
+    @user = User.find_by_id(params[:id])
   end
 
   def campaigns
-    @users = User.all
+    @users = User.all()
     @campaigns = Campaign.where(:creator=>current_user.id)
   end
 
   def campaign
+    @campaign = Campaign.find_by(:creator=>current_user.id, :slot=>params[:id])
   end
 
   def create_campaign
