@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-md-4">
             <input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple />
-            <label class="style-white border-white" for="file">Choose an image</label>
+            <label class="style-white border-white" style="padding:0" for="file"><%= image_tag("user_placeholder.jpg", class: "style-white border-white", style: "width:100%;") %></label>
           </div>
           <div class="col-md-8">
             <div class="row col-md-12">
@@ -28,15 +28,15 @@
             <div class="row col-md-12" style="padding-left: 5px;">
               <div class="col-md-12" style="padding-left: 0;">
                 <% if current_user.discription != "" %>
-                  <%= text_area_tag :discription, current_user.discription, rows: 8, maxlength: 10000, class: 'profile-box profile-textarea style-white border-white', placeholder: current_user.discription, style: "resize: none;" %>
+                  <%= text_area_tag :discription, current_user.discription, rows: 10, maxlength: 10000, class: 'profile-box profile-textarea style-white border-white', placeholder: current_user.discription, style: "height: calc(100% - 46px); resize: none;" %>
                 <% else %>
-                  <%= text_area_tag :discription, "", rows: 8, maxlength: 10000, class: 'profile-box profile-textarea style-white border-white', placeholder: "Discription", style: "resize: none;" %>
+                  <%= text_area_tag :discription, "", rows: 8, maxlength: 10000, class: 'profile-box profile-textarea style-white border-white', placeholder: "Discription", style: "height: calc(100% - 20px); resize: none;" %>
                 <% end %>
               </div>
               <div class="col-md-10">
               </div>
-              <div class="col-md-2">
-                <%= submit_tag("Update", class: "button", style: "width: calc(100% - 15px)")%>
+              <div class="col-md-2" style="padding:0;">
+                <%= submit_tag("Update", class: "button", style: "padding-top: 10px; width: calc(100% - 15px)")%>
               </div>
             </div>
           </div>
@@ -49,6 +49,7 @@
         <% @campaigns.each do |campaign| %>
           <div class="col-md-3">
             <div class="profile-create-card">
+              <%= image_tag("placeholder.jpg", style: "width:100%") %>
               <a href="/campaign/<%= campaign.slot %>" class="style-white" style="font-size: 1em"><h1><%= campaign.name %></h1></a>
             </div>
           </div>

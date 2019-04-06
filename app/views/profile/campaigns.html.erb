@@ -40,7 +40,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <textarea rows="8" placeholder="discription" id="campaigns_discription" name="campaigns[discription]" class="profile-box profile-textarea"></textarea>
+          <%= text_area_tag :description, "", rows: 8, maxlength: 10000, class: 'profile-box profile-textarea', placeholder: "Discription", style: "resize: none;" %>
         </div>
       </div>
       <div class="full-width" id="buttons-top-space">

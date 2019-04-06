@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'api_auth/index'
+  resources :items
   get '/sidebar_toggle', to: 'application#sidebar_toggle'
   #login
   get '/login-register', to: 'login#index'
@@ -18,7 +20,8 @@ Rails.application.routes.draw do
   get '/dm/campaings', to: 'dm#campaigns'
   get '/dm/store', to: 'dm#store'
   #api auth
-  post 'authenticate', to: 'authentication#authenticate'
+  get '/authenticates', to: 'api_auth#authenticate'
+
 
   resources :users
   resources :relationships, only: [:create, :destroy]
@@ -29,6 +32,7 @@ Rails.application.routes.draw do
     namespace 'v1' do
       resources :users
       resources :campaigns
+      resources :tokens
     end
   end
 

@@ -21,7 +21,7 @@ class ProfileController < ApplicationController
     else
       current_user.update_attribute(:campaigns_slot, current_user.campaigns_slot + 1)
     end
-    @campaign = Campaign.new(name: params[:name], creator: current_user.id, slot: current_user.campaigns_slot)
+    @campaign = Campaign.new(name: params[:name], creator: current_user.id, slot: current_user.campaigns_slot, description: params[:description])
     if @campaign.save
       redirect_to "/campaigns"
     else

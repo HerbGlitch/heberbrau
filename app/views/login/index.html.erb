@@ -1,62 +1,66 @@
 <section class="login-background">
-  <div class="flip-box">
-    <div id="flip-box-inner" class="flip-box-inner">
-      <div class="flip-box-front" id="flip-box-front">
-        <%= form_tag("/login", method: "post") do %>
-          <h1>Login</h1>
-          <div class="row">
-            <div class="col-md-4">
-              <a href="/users/auth/facebook" class="fb btn">
-                <i class="fa fa-facebook fa-fw"></i> Login with Facebook
-              </a>
-            </div>
-            <div class="col-md-4">
-              <a href="/users/auth/twitter" class="twitter btn">
-                <i class="fa fa-twitter fa-fw"></i> Login with Twitter
-              </a>
-            </div>
-            <div class="col-md-4">
-              <a href="/users/auth/google_oauth2" class="google btn">
-                <i class="fa fa-google fa-fw"></i> Login with Google
-              </a>
-            </div>
-          </div>
-          <div>
-            <label for="session_email">Email</label>
-            <%= text_field_tag :email, "" %>
-            <label for="session_password">Password</label>
-            <%= password_field_tag :password, "" %>
-              <label>
-              <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
-          </div>
-          <div style="width: 100%; padding-top: 20px;">
-          </div>
-          <div class="full-width">
-            <span class="psw" style="padding:0;">Forgot <a href="#">password?</a></span>
-          </div>
-          <div class="full-width">
-            <button id="register" type="button">Register</button>
-            <button name="commit" type="submit" value="Log in">Login</button>
-          </div>
-        <% end %>
+  <div class="containter" style="height: 100vh;">
+    <div class="flip-box row align-items-center">
+      <div class="col-md-4">
       </div>
-      <div class="flip-box-back" id="flip-box-back">
-        <%= form_tag("/register", method: "post") do %>
-          <h1>Register</h1>
-          <div>
-            <label for="user_email">Email</label>
-            <%= text_field_tag :email, "" %>
-            <label for="user_password">Password</label>
-            <%= password_field_tag :password, "" %>
-            <label for="user_password_confirmation">Confirmation</label>
-            <%= password_field_tag :password_confirmation, "" %>
-          </div>
-          <div class="full-width" id="buttons-top-space">
-            <button id="user-login" type="button">User Login</button>
-            <input class="button" name="commit" type="submit" value="register" />
-          </div>
-        <% end %>
+      <div id="flip-box-inner" class="flip-box-inner col-md-4">
+        <div class="flip-box-front" id="flip-box-front">
+          <%= form_tag("/login", method: "post") do %>
+            <h1>Login</h1>
+            <div class="row">
+              <div class="col-md-4">
+                <a href="/users/auth/facebook" class="fb btn">
+                  <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+                </a>
+              </div>
+              <div class="col-md-4">
+                <a href="/users/auth/twitter" class="twitter btn">
+                  <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+                </a>
+              </div>
+              <div class="col-md-4">
+                <a href="/users/auth/google_oauth2" class="google btn">
+                  <i class="fa fa-google fa-fw"></i> Login with Google
+                </a>
+              </div>
+            </div>
+            <div>
+              <label for="session_email">Email</label>
+              <%= text_field_tag :email, "" %>
+              <label for="session_password">Password</label>
+              <%= password_field_tag :password, "" %>
+                <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+              </label>
+            </div>
+            <div style="width: 100%; padding-top: 20px;">
+            </div>
+            <div class="full-width">
+              <span class="psw" style="padding:0;">Forgot <a href="#">password?</a></span>
+            </div>
+            <div class="full-width">
+              <button id="register" type="button">Register</button>
+              <button name="commit" type="submit" value="Log in">Login</button>
+            </div>
+          <% end %>
+        </div>
+        <div class="flip-box-back" id="flip-box-back">
+          <%= form_tag("/register", method: "post") do %>
+            <h1>Register</h1>
+            <div>
+              <label for="user_email">Email</label>
+              <%= text_field_tag :email, "" %>
+              <label for="user_password">Password</label>
+              <%= password_field_tag :password, "" %>
+              <label for="user_password_confirmation">Confirmation</label>
+              <%= password_field_tag :password_confirmation, "" %>
+            </div>
+            <div class="full-width" id="buttons-top-space">
+              <button id="user-login" type="button">User Login</button>
+              <input class="button" name="commit" type="submit" value="register" />
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

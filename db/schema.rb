@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_19_221735) do
+ActiveRecord::Schema.define(version: 2019_04_01_161734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 2019_03_19_221735) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_game_dm_on_user_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "parties", force: :cascade do |t|
@@ -77,6 +84,7 @@ ActiveRecord::Schema.define(version: 2019_03_19_221735) do
     t.string "discription", limit: 10000, default: "", null: false
     t.integer "campaigns_slot"
     t.boolean "sidebar_active", default: true
+    t.text "token"
   end
 
 end
