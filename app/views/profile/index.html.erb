@@ -53,8 +53,10 @@
         <% @campaigns.each do |campaign| %>
           <div class="col-md-3">
             <div class="profile-create-card">
-              <%= image_tag("placeholder.jpg", style: "width:100%") %>
-              <a href="/campaign/<%= campaign.slot %>" class="style-white" style="font-size: 1em"><h1><%= campaign.name %></h1></a>
+              <a href="/campaign/<%= campaign.slot %>" class="style-white" style="font-size: 1em">
+                <%= image_tag("placeholder.jpg", style: "width:100%") %>
+                <h1 class="profile-overlay"><%= campaign.name %></h1>
+              </a>
             </div>
           </div>
         <% end %>
@@ -68,9 +70,15 @@
             <div class="col-md-3">
               <div class="profile-create-card">
                 <% if user.username != "" %>
-                  <a href="/profile/<%= user.id %>" class="style-white" style="font-size: .3em"><h1><%= user.username %></h1></a>
+                  <a href="/profile/<%= user.id %>" class="style-white">
+                    <%= image_tag("user_placeholder.jpg", style: "width:100%") %>
+                    <h1 class="profile-overlay"><%= user.username %></h1>
+                  </a>
                 <% else %>
-                  <a href="/profile/<%= user.id %>" class="style-white" style="font-size: .3em"><h1><%= user.email %></h1></a>
+                  <a href="/profile/<%= user.id %>" class="style-white">
+                    <%= image_tag("user_placeholder.jpg", style: "width:100%") %>
+                    <h1 class="profile-overlay"><%= user.email %></h1>
+                  </a>
                 <% end %>
               </div>
             </div>
