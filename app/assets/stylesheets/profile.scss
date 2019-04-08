@@ -1,4 +1,4 @@
-.profile-background {
+.profile-background::before {
   background-color: rgba(0,0,0,1);
   background-image: url(asset-path('back_profile.jpg'));
   background-image: linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.8)), url(asset-path('back_profile.jpg'));
@@ -7,17 +7,17 @@
   filter: grayscale(100%);
   background-blend-mode: luminosity;
   min-height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
 }
 
-.profile-background-u {
-  background-color: rgba(0,0,0,1);
+body {
   background-image: url(asset-path('back_profile_u.jpg'));
   background-image: linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.8)), url(asset-path('back_profile_u.jpg'));
-  background-size: cover;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
   background-blend-mode: luminosity;
   min-height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .profile-background-f {
@@ -29,6 +29,8 @@
   filter: grayscale(100%);
   background-blend-mode: luminosity;
   min-height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .profile-background-c {
@@ -40,6 +42,8 @@
   filter: grayscale(100%);
   background-blend-mode: luminosity;
   min-height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .profile-campaings-box {
