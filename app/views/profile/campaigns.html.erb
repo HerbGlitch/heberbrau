@@ -34,12 +34,11 @@
         </div>
         <div class="col-md-8">
           <%= text_field_tag :name, "", class: 'profile-box', placeholder: "Title", style: "margin-top:30px; font-size: 2em;" %>
-          <div onclick="autocomplete(document.getElementById('campaigns_dm'), users);" class="profile-autocomplete" id="campaigns-dm-parent">
-            <input placeholder="dm" id="campaigns_dm" name="campaigns[dm]" data-role="tagsinput" type="text" class="profile-box" style="margin: 0; font-size: 2em;"/>
-          </div>
-          <div onclick="autocomplete(document.getElementById('party'), countries);" class="profile-autocomplete" id="campaigns_dm">
-            <input placeholder="party" id="campaigns_party" name="campaigns[party]" data-role="" type="text" class="profile-box" style="margin: 0; font-size: 2em;"/>
-          </div>
+          <label for="private">Private:</label>
+          <label class="switch">
+            <input id="private" value="private" name="private" type="checkbox">
+            <span class="slider"></span>
+          </label>
         </div>
       </div>
       <div class="row">

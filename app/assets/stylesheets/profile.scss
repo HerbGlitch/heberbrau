@@ -238,3 +238,23 @@ input-focused {
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
+.profile-search input[type=text] {
+  width: 130px;
+  position: relative;
+  z-index: 20;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  font-size: 16px;
+  background-color: rgba(0,0,0,.3);
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  color: #fff;
+  font-size: 2em;
+}
+
+.profile-search input[type=text]:focus {
+  width: 60%;
+}
