@@ -7,5 +7,10 @@
         <h1 style="text-align: center;" class="profile-h1 col-md-12"><%= @user.email %></h1>
       <% end %>
     </div>
+    <div class="col-md-12" style="padding-left: 0;">
+      <% if @user.discription != "" %>
+        <%= text_area_tag :discription, @user.discription, rows: 10, maxlength: 10000, class: 'profile-box profile-textarea style-white border-white', placeholder: current_user.discription, style: "height: calc(100% - 46px); resize: none;" %>
+      <% end %>
+    </div>
   </div>
 </section>
