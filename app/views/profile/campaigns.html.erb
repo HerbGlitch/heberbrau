@@ -8,7 +8,7 @@
             <div class="profile-create-card">
               <a href="/campaign/<%= campaign.slot %>" class="style-white" style="font-size: 1em">
                 <%= image_tag("placeholder.jpg", style: "width:100%") %>
-                <h1 class="profile-overlay"><%= campaign.name %></h1>
+                <h1 class="profile-overlay-active"><%= campaign.name %></h1>
               </a>
             </div>
           </div>
@@ -17,7 +17,7 @@
       <div class="col-md-3">
         <div onclick="openModal('create_campaign');" class="profile-create-card">
           <%= image_tag("placeholder.jpg", style: "width:100%; opacity: 0;") %>
-          <h1 id="profile-add-campaign-plus" class="profile-overlay" style="opacity: 1;">+</h1>
+          <h1 id="profile-add-campaign-plus" class="profile-overlay-active">+</h1>
         </div>
       </div>
     </div>
