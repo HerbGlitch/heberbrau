@@ -1,0 +1,2 @@
+class ChangePasswordType < ApplicationRecord
+end
