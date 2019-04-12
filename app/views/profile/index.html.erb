@@ -53,7 +53,7 @@
         <% @campaigns.each do |campaign| %>
           <div class="col-md-3">
             <div class="profile-create-card">
-              <a href="/campaign/<%= campaign.slot %>" class="style-white" style="font-size: 1em">
+              <a href="/campaign/<%= current_user.id %>/<%= campaign.slot %>" class="style-white" style="font-size: 1em">
                 <%= image_tag("placeholder.jpg", style: "width:100%") %>
                 <h1 class="profile-overlay"><%= campaign.name %></h1>
               </a>

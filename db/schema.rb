@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_161734) do
+ActiveRecord::Schema.define(version: 2019_04_12_195804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2019_04_01_161734) do
     t.datetime "updated_at", null: false
     t.integer "creator"
     t.integer "slot"
+    t.boolean "private", default: false
+    t.string "image"
     t.index ["game_dm_id"], name: "index_campaigns_on_game_dm_id"
   end
 

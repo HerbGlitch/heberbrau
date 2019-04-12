@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pets
   get 'api_auth/index'
   resources :items
   get '/sidebar_toggle', to: 'application#sidebar_toggle'
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
   #profile
   get '/profile/:id', to: 'profile#profile'
   get '/campaigns', to: 'profile#campaigns'
-  get '/campaign/:id', to: 'profile#campaign'
+  get '/campaign/:user_id/:id', to: 'profile#campaign'
   get '/friend_search', to: 'profile#friend_search'
   post '/update_user', to: 'profile#update_user'
   post '/create_campaign', to: 'profile#create_campaign'

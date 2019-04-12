@@ -14,7 +14,7 @@ class ProfileController < ApplicationController
   end
 
   def campaign
-    @campaign = Campaign.find_by(:creator=>current_user.id, :slot=>params[:id])
+    @campaign = Campaign.find_by(:creator=>params[:user_id], :slot=>params[:id])
   end
 
   def create_campaign
@@ -23,7 +23,7 @@ class ProfileController < ApplicationController
     else
       current_user.update_attribute(:campaigns_slot, current_user.campaigns_slot + 1)
     end
-    @campaign = Campaign.new(name: params[:name], creator: current_user.id, slot: current_user.campaigns_slot, description: params[:description])
+    @campaign = Campaign.new(name: params[:name], creator: current_user.id, slot: current_user.campaigns_slot, description: params[:description], private: params[:private])
     if @campaign.save
       redirect_to "/campaigns"
     else

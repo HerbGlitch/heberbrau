@@ -34,8 +34,8 @@ gem 'omniauth-twitter'
 gem 'activerecord-session_store'
 gem 'jwt'
 gem 'simple_command'
-gem "paperclip", "~> 4.2"
 # Use ActiveStorage variant
+gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment

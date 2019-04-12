@@ -1,64 +1,38 @@
 <section class="profile-background-u" style="min-height: inherit">
   <div id="content" class="nav-spacing">
     <div class="profile-edit-modal">
-      <h1 style="text-align: center;" class="profile-h1 col-md-12">Profile</h1>
+      <% if @user.username != "" %>
+        <h1 style="text-align: center;" class="profile-h1 col-md-12"><%= @user.username %></h1>
+      <% else %>
+        <h1 style="text-align: center;" class="profile-h1 col-md-12"><%= @user.email %></h1>
+      <% end %>
       <%= form_tag("/update_user", method: "post") do %>
         <div class="row">
-          <div class="col-md-4">
-            <input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple />
-            <label class="style-white border-white" style="padding:0" for="file"><%= image_tag("user_placeholder.jpg", class: "style-white border-white", style: "width:100%;") %></label>
+          <div class="col-md-4 border-white">
+            <%= image_tag("user_placeholder.jpg", class: "style-white", style: "width:100%; margin: 20px; border: 1px solid #fff;") %>
           </div>
           <div class="col-md-8">
-            <div class="row col-md-12">
-              <div class="col-md-6">
-                <% if @user.username != "" %>
-                  <%= text_field_tag :username, @user.username, class: 'profile-box style-white border-white', placeholder: @user.username, value: @user.username, style: "margin-top:30px; font-size: 2em;" %>
-                <% else %>
-                  <%= text_field_tag :username, "Username", class: 'profile-box style-white border-white', placeholder: "Username", value: "", style: "margin-top:30px; font-size: 2em;" %>
-                <% end %>
-              </div>
-              <div class="col-md-6">
-                <% if @user.email != "" %>
-                  <%= email_field_tag :email, @user.email, class: 'profile-box style-white border-white', placeholder: @user.email, value: @user.email, style: "margin-top:30px; font-size: 2em;" %>
-                <% else %>
-                  <%= email_field_tag :email, @user.email, class: 'profile-box style-white border-white', placeholder: "Email", value: "", style: "margin-top:30px; font-size: 2em;" %>
-                <% end %>
-              </div>
-            </div>
-            <div class="row col-md-12" style="padding-left: 5px;">
-              <div class="col-md-12" style="padding-left: 0;">
-                <% if @user.discription != "" %>
-                  <%= text_area_tag :discription, @user.discription, rows: 10, maxlength: 10000, class: 'profile-box profile-textarea style-white border-white', placeholder: @user.discription, style: "height: calc(100% - 46px); resize: none;" %>
-                <% else %>
-                  <%= text_area_tag :discription, "", rows: 8, maxlength: 10000, class: 'profile-box profile-textarea style-white border-white', placeholder: "Discription", style: "height: calc(100% - 20px); resize: none;" %>
-                <% end %>
-              </div>
-              <div class="col-md-10">
-              </div>
-              <div class="col-md-2" style="padding:0;">
-                <%= submit_tag("Update", class: "button", style: "padding-top: 10px; width: calc(100% - 15px)")%>
-              </div>
-            </div>
+            <% if @user.discription != "" %>
+              <h1 class="style-white" style="padding: 20px;"><%= @user.discription %></h1>
+            <% end %>
           </div>
         </div>
       <% end %>
     </div>
-  <!-- </div>
-</section>
-<section class="profile-background-u">
-  <div id="content" class="nav-spacing"> -->
     <% if !@campaigns.nil? %>
       <div class="row profile-campaings-box">
         <h1 class="profile-h1 col-md-12">Campaings</h1>
         <% @campaigns.each do |campaign| %>
-          <div class="col-md-3">
-            <div class="profile-create-card">
-              <a href="/campaign/<%= campaign.slot %>" class="style-white" style="font-size: 1em">
-                <%= image_tag("placeholder.jpg", style: "width:100%") %>
-                <h1 class="profile-overlay"><%= campaign.name %></h1>
-              </a>
+          <% if !campaign.private %>
+            <div class="col-md-3">
+              <div class="profile-create-card">
+                <a href="/campaign/<%= @user.id %>/<%= campaign.slot %>" class="style-white" style="font-size: 1em">
+                  <%= image_tag("placeholder.jpg", style: "width:100%") %>
+                  <h1 class="profile-overlay"><%= campaign.name %></h1>
+                </a>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     <% end %>
