@@ -37,6 +37,7 @@ class ProfileController < ApplicationController
 
   def update_user
     @user = User.find_by(id: current_user.id)
+    puts "-----------------------"
     if(@user)
       if(params[:username] != "" && params[:username] != current_user.username)
         @user.update_attribute(:username, params[:username])

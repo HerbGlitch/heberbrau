@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  mount_uploader :image, ImageUploader
 
   def self.create_from_provider_data(provider_data)
     where(provider: provider_data.provider, uid: provider_data.uid).first_or_create do | user |
