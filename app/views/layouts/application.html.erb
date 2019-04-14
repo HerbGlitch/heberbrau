@@ -65,9 +65,7 @@
     <%= yield %>
     <% if current_user %>
       <script type="text/javascript">
-        <% if !current_user.sidebar_active %>
-          $('#sidebar, #content').toggleClass('active');
-        <% end %>
+        $('#sidebar, #content').toggleClass('active');
         $(document).ready(function () {
           $('#sidebarCollapse').on('click', function () {
             $('#sidebar, #content').toggleClass('active');
