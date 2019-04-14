@@ -6,8 +6,12 @@
         <% @campaigns.each do |campaign| %>
           <div class="col-md-3">
             <div class="profile-create-card">
-              <a href="/campaign/<%= campaign.slot %>" class="style-white" style="font-size: 1em">
-                <%= image_tag("placeholder.jpg", style: "width:100%") %>
+              <a href="/campaign/<%= current_user.id %>/<%= campaign.slot %>" class="style-white" style="font-size: 1em">
+                <% if campaign.image.url != nil %>
+                  <%= image_tag(campaign.image.url, style: "width:100%") %>
+                <% else %>
+                  <%= image_tag("placeholder.jpg", style: "width:100%") %>
+                <% end %>
                 <h1 class="profile-overlay-active"><%= campaign.name %></h1>
               </a>
             </div>
