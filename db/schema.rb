@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_12_195804) do
+ActiveRecord::Schema.define(version: 2019_04_13_175837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2019_04_12_195804) do
     t.integer "campaigns_slot"
     t.boolean "sidebar_active", default: true
     t.text "token"
+    t.string "image"
   end
 
 end

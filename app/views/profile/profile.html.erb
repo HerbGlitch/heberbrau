@@ -9,7 +9,11 @@
       <%= form_tag("/update_user", method: "post") do %>
         <div class="row">
           <div class="col-md-4 border-white">
-            <%= image_tag("user_placeholder.jpg", class: "style-white", style: "width:100%; margin: 20px; border: 1px solid #fff;") %>
+            <% if @user.image.url != nil %>
+              <%= image_tag(@user.image.url, class: "style-white", style: "width:100%; margin: 20px; border: 1px solid #fff;") %>
+            <% else %>
+              <%= image_tag("user_placeholder.jpg", class: "style-white", style: "width:100%; margin: 20px; border: 1px solid #fff;") %>
+            <% end %>
           </div>
           <div class="col-md-8">
             <% if @user.discription != "" %>
@@ -45,12 +49,20 @@
               <div class="profile-create-card">
                 <% if user.username != "" %>
                   <a href="/profile/<%= user.id %>" class="style-white">
-                    <%= image_tag("user_placeholder.jpg", style: "width:100%") %>
+                    <% if user.image.url != nil %>
+                      <%= image_tag(user.image.url, style: "width:100%") %>
+                    <% else %>
+                      <%= image_tag("user_placeholder.jpg", style: "width:100%") %>
+                    <% end %>
                     <h1 class="profile-overlay"><%= user.username %></h1>
                   </a>
                 <% else %>
                   <a href="/profile/<%= user.id %>" class="style-white">
-                    <%= image_tag("user_placeholder.jpg", style: "width:100%") %>
+                    <% if user.image.url != nil %>
+                      <%= image_tag(user.image.url, style: "width:100%") %>
+                    <% else %>
+                      <%= image_tag("user_placeholder.jpg", style: "width:100%") %>
+                    <% end %>
                     <h1 class="profile-overlay"><%= user.email %></h1>
                   </a>
                 <% end %>

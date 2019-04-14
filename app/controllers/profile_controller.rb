@@ -14,7 +14,7 @@ class ProfileController < ApplicationController
   end
 
   def campaign
-    @campaign = Campaign.find_by(:creator=>params[:user_id], :slot=>params[:id])
+    @campaign = Campaign.find_by(:creator=>params[:uid], :slot=>params[:id])
   end
 
   def create_campaign
@@ -37,10 +37,13 @@ class ProfileController < ApplicationController
 
   def update_user
     @user = User.find_by(id: current_user.id)
-    puts "-----------------------"
     if(@user)
       if(params[:username] != "" && params[:username] != current_user.username)
         @user.update_attribute(:username, params[:username])
+      end
+      if(params[:image] != "")
+        @user.image = params[:image]
+        @user.save!
       end
       # if(params[:email] != "" && params[:email] != current_user.email)
       #   @user.update_attribute(:email, params[:email])
@@ -51,6 +54,26 @@ class ProfileController < ApplicationController
       redirect_to root_path
     else
       puts("update user broken")
+    end
+  end
+
+  def update_campaign
+    @campaign = Campaign.find_by(:creator=>params[:uid], :slot=>params[:id])
+    if(@campaign)
+      if(params[:image] != "")
+        @campaign.image = params[:image]
+        @campaign.save!
+      end
+      # if(params[:email] != "" && params[:email] != current_user.email)
+      #   @user.update_attribute(:email, params[:email])
+      # end
+      if(params[:discription] != "" && params[:discription] != @campaign.description)
+        @campaign.update_attribute(:description, params[:discription])
+      end
+      puts "------------HERE--------------"
+      redirect_to "/campaign/#{params[:uid]}/#{params[:id]}"
+    else
+      puts("update campaign broken")
     end
   end
 

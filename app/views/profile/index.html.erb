@@ -2,11 +2,17 @@
   <div id="content" class="nav-spacing">
     <div class="profile-edit-modal">
       <h1 style="text-align: center;" class="profile-h1 col-md-12">Profile</h1>
-      <%= form_for current_user do |f|  %>
+      <%= form_tag("/update_user", method: "post", multipart: true) do %>
         <div class="row">
           <div class="col-md-4">
-            <%= f.file_field :image, id: "file", class: "inputfile" %>
-            <label class="style-white border-white" style="padding:0" for="file"><%= image_tag("user_placeholder.jpg", class: "style-white border-white", style: "width:100%;") %></label>
+            <%= file_field_tag :image, id: "file", class: "inputfile" %>
+            <label class="style-white border-white" style="padding:0" for="file">
+              <% if current_user.image.url != nil %>
+                <%= image_tag(current_user.image.url, class: "style-white border-white", style: "width:100%;") %>
+              <% else %>
+                <%= image_tag("user_placeholder.jpg", class: "style-white border-white", style: "width:100%;") %>
+              <% end %>
+            </label>
           </div>
           <div class="col-md-8">
             <div class="row col-md-12">
@@ -54,7 +60,11 @@
           <div class="col-md-3">
             <div class="profile-create-card">
               <a href="/campaign/<%= current_user.id %>/<%= campaign.slot %>" class="style-white" style="font-size: 1em">
-                <%= image_tag("placeholder.jpg", style: "width:100%") %>
+                <% if campaign.image.url != nil %>
+                  <%= image_tag(campaign.image.url, style: "width:100%") %>
+                <% else %>
+                  <%= image_tag("placeholder.jpg", style: "width:100%") %>
+                <% end %>
                 <h1 class="profile-overlay"><%= campaign.name %></h1>
               </a>
             </div>
@@ -71,12 +81,20 @@
               <div class="profile-create-card">
                 <% if user.username != "" %>
                   <a href="/profile/<%= user.id %>" class="style-white">
-                    <%= image_tag("user_placeholder.jpg", style: "width:100%") %>
+                    <% if user.image.url != nil %>
+                      <%= image_tag(user.image.url, style: "width:100%") %>
+                    <% else %>
+                      <%= image_tag("user_placeholder.jpg", style: "width:100%") %>
+                    <% end %>
                     <h1 class="profile-overlay"><%= user.username %></h1>
                   </a>
                 <% else %>
                   <a href="/profile/<%= user.id %>" class="style-white">
-                    <%= image_tag("user_placeholder.jpg", style: "width:100%") %>
+                    <% if user.image.url != nil %>
+                      <%= image_tag(user.image.url, style: "width:100%") %>
+                    <% else %>
+                      <%= image_tag("user_placeholder.jpg", style: "width:100%") %>
+                    <% end %>
                     <h1 class="profile-overlay"><%= user.email %></h1>
                   </a>
                 <% end %>
