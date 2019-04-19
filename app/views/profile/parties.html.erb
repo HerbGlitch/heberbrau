@@ -1,0 +1,30 @@
+<section>
+  <div id="content" class="nav-spacing">
+    <h1 style="text-align: center;" class="profile-h1 col-md-12">Parties</h1>
+    <div class="row profile-campaings-box">
+      <% if !@parties.nil? %>
+        <% @parties.each do |party| %>
+          <div class="col-md-3">
+            <div class="profile-create-card">
+              <a href="/party/<%= party.id %>" class="style-white" style="font-size: 1em">
+                <% if party.image.url != nil %>
+                  <%= image_tag(party.image.url, style: "width:100%") %>
+                <% else %>
+                  <%= image_tag("placeholder.jpg", style: "width:100%") %>
+                <% end %>
+              </a>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="col-md-3">
+        <div class="profile-create-card">
+          <a href="/create_party">
+            <%= image_tag("placeholder.jpg", style: "width:100%; opacity: 0;") %>
+            <h1 id="profile-add-campaign-plus" class="profile-overlay-active">+</h1>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -18,7 +18,33 @@
   opacity: 1;
 }
 
-.profile-overlay-container {
+.profile-overlay-active {
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1;
+  width: 100%;
+  transition: 1s ease;
+  opacity:1;
+  color: var(--main-color);
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+  font-size: .9em !important;
+}
+
+.profile-campaings-box {
+  text-align: center;
+}
+
+.profile-h1 {
+  color: var(--main-color);
+}
+
+
+.profile-overlay-container-party {
   margin: 0;
   position: absolute;
   bottom: 0;
@@ -36,7 +62,7 @@
   overflow-x: hidden;
 
   h1 {
-    font-size: 1em;
+    font-size: 1em !important;
     padding: 10px;
   }
 
@@ -49,21 +75,34 @@
   }
 }
 
-.profile-overlay-active {
+.profile-overlay-active-party {
   transition: 1s ease;
 }
 
-.profile-create-card:hover .profile-overlay-active {
+.profile-create-card-party:hover .profile-overlay-active-party {
   max-width: 75%;
   width: 75%;
 }
 
-.profile-campaings-box {
-  text-align: center;
+.profile-create-card-party {
+  margin: 20px;
+  color: var(--main-color);
+  border: 2px solid rgba(255, 255, 255, .7);
+  transition: 1s;
+  cursor: pointer;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  font-size: var(--medium-font);
 }
 
-.profile-h1 {
-  color: var(--main-color);
+.profile-create-card-party:hover {
+  border: 4px solid rgba(255, 255, 255, .7);
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+}
+
+.profile-create-card-party h1 {
+  font-size: 1.5em;
 }
 
 .profile-create-card {
@@ -81,6 +120,10 @@
   border: 4px solid rgba(255, 255, 255, .7);
   transform: scale(1.05);
   -webkit-transform: scale(1.05);
+}
+
+.profile-create-card h1 {
+  font-size: 1.5em;
 }
 
 .profile-box {

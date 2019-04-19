@@ -1,0 +1,54 @@
+
+<section class="profile-background-f">
+  <div id="content" class="nav-spacing">
+    <div class="profile-search">
+      <form style="text-align: center;">
+        <input type="text" name="search" placeholder="Search.." onkeyup="userSearch()" id="user-search">
+      </form>
+    </div>
+    <div class="row profile-campaings-box" id="profile-users">
+      <% if @users.any? %>
+        <% @users.each do |user| %>
+          <% if current_user != user %>
+            <div class="col-md-3">
+              <div class="profile-create-card-party">
+                <a class="style-white">
+                  <% if user.image.url != nil %>
+                    <%= image_tag(user.image.url, style: "width:100%") %>
+                  <% else %>
+                    <%= image_tag("user_placeholder.jpg", style: "width:100%") %>
+                  <% end %>
+                  <div class="row profile-overlay-container-party">
+                    <div class="profile-overlay-active-party col-md-12">
+                      <h1><%= user.email %></h1>
+                    </div>
+                    <div class="col-md-3" style="padding:0;">
+                      <button onclick="window.location = '/lol'"><i class="fas fa-check"></i></button>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <script>
+    function userSearch() {
+      var input, filter, user_names, users, username;
+      input = document.getElementById("user-search");
+      filter = input.value.toUpperCase();
+      user_names = document.getElementById("profile-users");
+      users = user_names.getElementsByClassName("col-md-3");
+      for (i = 0; i < users.length; i++) {
+        username = users[i].getElementsByTagName("h1")[0];
+        if (username.innerHTML.toUpperCase().indexOf(filter) > - 1) {
+          users[i].style.display = "";
+        } else {
+          users[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+</section>
