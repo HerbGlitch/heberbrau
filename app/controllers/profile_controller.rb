@@ -68,9 +68,18 @@ class ProfileController < ApplicationController
   end
 
   def create_party
-    @party = Parties.new()
+    @party = Parties.new(party_member_id: current_user.id)
     if @party.save
-      redirect_to "/party/#{ @party.id }"
+      redirect_to "/party/#{@party.id}"
+    else
+      puts "dang"
+    end
+  end
+
+  def add_to_party
+    @party_member = PartyMembers.new(user_id: params[:uid], party_id: params[:pid])
+    if @party_member.save
+      redirect_to "/party/#{params[:pid]}"
     else
       puts "dang"
     end

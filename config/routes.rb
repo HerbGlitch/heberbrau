@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/create_party', to: 'profile#create_party'
   get '/friend_search', to: 'profile#friend_search'
   post '/update_user', to: 'profile#update_user'
+  post '/add_to_party', to: 'profile#add_to_party'
   post '/create_campaign', to: 'profile#create_campaign'
   post '/update_campaign/:uid/:id', to: 'profile#update_campaign'
   #dm
