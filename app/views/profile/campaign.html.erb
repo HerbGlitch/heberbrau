@@ -1,4 +1,4 @@
-<section class="profile-background-c" style="background-image: linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.8)), url(<% if @campaign.image.url != nil %><%=asset_path(@campaign.image.url)%><% else %><%=asset_path('placeholder.jpg')%><% end %>);">
+<section>
   <div id="content" class="nav-spacing">
     <h1 style="text-align: center;" class="profile-h1 col-md-12"><%= @campaign.name %></h1>
     <div class="row">
@@ -48,5 +48,85 @@
         <% end %>
       </div>
     </div>
+    <div class="row profile-campaings-box">
+      <h1 class="profile-h1 col-md-12">Locations</h1>
+      <% if !@campaigns.nil? %>
+        <% @campaigns.each do |campaign| %>
+          <div class="col-md-3">
+            <div class="profile-create-card">
+              <a href="/campaign/<%= current_user.id %>/<%= campaign.slot %>" class="style-white" style="font-size: 1em">
+                <% if campaign.image.url != nil %>
+                  <%= image_tag(campaign.image.url, style: "width:100%") %>
+                <% else %>
+                  <%= image_tag("placeholder.jpg", style: "width:100%") %>
+                <% end %>
+                <h1 class="profile-overlay-active"><%= campaign.name %></h1>
+              </a>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="col-md-3">
+        <div onclick="openModal('create_campaign');" class="profile-create-card">
+          <%= image_tag("placeholder.jpg", style: "width:100%; opacity: 0;") %>
+          <h1 id="profile-add-campaign-plus" class="profile-overlay-active">+</h1>
+        </div>
+      </div>
+    </div>
+    <div id="create_campaign" class="profile-modal animate">
+      <%= form_tag("/create_campaign", method: "post", class: "profile-modal-content", autocomplete: "off") do %>
+        <div style="width:100%;">
+          <a id="profile-modal-exit" onclick="closeModal('create_campaign')" style="color:#000;"><b>X</b></a>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple />
+            <label for="file">Choose an image</label>
+          </div>
+          <div class="col-md-8">
+            <%= text_field_tag :name, "", class: 'profile-box', placeholder: "Title", style: "margin-top:30px; font-size: 2em;" %>
+            <label for="private">Private:</label>
+            <label class="switch">
+              <%= check_box_tag :private %>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= text_area_tag :description, "", rows: 8, maxlength: 10000, class: 'profile-box profile-textarea', placeholder: "Discription", style: "resize: none;" %>
+          </div>
+        </div>
+        <div class="full-width" id="buttons-top-space">
+          <button id="campaign-cancel" onclick="closeModal('id01')" type="button">Cancel</button>
+          <input class="button" name="commit" type="submit" value="Create" />
+        </div>
+      <% end %>
+    </div>
   </div>
 </section>
+
+<script>
+  $('#dm').on({
+      focus: function () {
+          $(".bootstrap-tagsinput").addClass('prfile-input-focused');
+      },
+  });
+</script>
+<script>
+  navLogout = document.getElementById("right-nav-item")
+  navName = document.getElementById("nav-name")
+  test = document.getElementById("test")
+
+  function openModal(modalID){
+    document.getElementById(modalID).style = "display: initial; opacity: 1;";
+    document.getElementById(modalID).className = "profile-modal";
+    document.getElementById(modalID).classList.add("animate");
+  }
+
+  function closeModal(modalID){
+      document.getElementById(modalID).className = 'profile-modal unanimate'
+      document.getElementById(modalID).style = "display:initial; opacity: 0;";
+      setTimeout(function() {document.getElementById(modalID).style = 'display: none;';}, 600);
+  }
+</script>

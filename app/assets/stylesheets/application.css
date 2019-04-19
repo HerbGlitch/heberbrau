@@ -15,38 +15,57 @@
  */
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
 
+:root {
+  --main-color: #fff;
+  --main-bg-color: #000;
+  --xl-font: 4em;
+  --large-font: 3em;
+  --medium-font: 2em;
+  --small-font: 1.3em;
+  --button-font-size: 1.6em;
+  --font: 'Amatic SC', cursive;
+}
+
 body {
   margin: 0;
   font-family: 'Amatic SC', cursive !important;
-  background-color: rgba(0,0,0,1);
+  background-color: var(--main-bg-color);
   background-size: cover;
   background-blend-mode: luminosity;
   min-height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 h1 {
-  font-size: 3em;
+  font-size: var(--large-font);
 }
 
 p, a, label, span, b {
-  font-size: 1.3em;
+  font-size: var(--small-font);
 }
 
 a {
   text-decoration: none;
+  color: var(--main-color);
+}
+
+a:hover {
+  color: #ccc;
+  text-decoration: none;
 }
 
 #right-nav-item {
-  color: #fff;
+  color: var(--main-color);
 }
 
 #right-nav-item:hover {
-  color: #fff !important;
+  color: var(--main-color) !important;
 }
 
 button, .button {
-  font-family: 'Amatic SC', cursive !important;
-  font-size: 1.6em !important;
+  font-family: var(--font)!important;
+  font-size: var(--button-font-size) !important;
   float: left;
 }
 
@@ -56,8 +75,8 @@ button, .button {
 }
 
 #nav-name {
-  color: #fff;
-  font-size: 2em;
+  color: var(--main-color);
+  font-size: var(--medium-font);
 }
 
 .nav-header {
@@ -65,8 +84,8 @@ button, .button {
 }
 
 .navbar-nav {
-  font-family: 'Amatic SC', cursive !important;
-  font-size: 2em;
+  font-family: var(--font) !important;
+  font-size: var(--medium-font);
 }
 
 .navbar {
@@ -76,7 +95,7 @@ button, .button {
   background: transparent !important;
   position: fixed !important;
   top: 0;
-  color: #fff;
+  color: var(--main-color);
   z-index: 3;
 }
 
@@ -177,7 +196,7 @@ input[type=text], input[type=password], input[type="email"] {
 }
 
 .nav-link-a {
-  color: #fff !important;
+  color: var(--main-color) !important;
 }
 
 .line {
@@ -205,7 +224,7 @@ input[type=text], input[type=password], input[type="email"] {
 .line {
   fill:none;
   transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
-  stroke:#fff;
+  stroke: var(--main-color);
   stroke-width:5.5;
   stroke-linecap:round;
 }
@@ -231,7 +250,7 @@ input[type=text], input[type=password], input[type="email"] {
   height: 100vh;
   z-index: 2;
   background: rgba(0,0,0,.5);
-  color: #fff;
+  color: var(--main-color);
   transition: all 0.3s;
 }
 
@@ -265,7 +284,7 @@ a[aria-expanded="true"]::before {
 /* Set a style for all buttons */
 button {
   background-color: #4CAF50;
-  color: white;
+  color: var(--main-color);
   padding: 14px 20px;
   border: none;
   cursor: pointer;
@@ -274,7 +293,7 @@ button {
 
 .button {
   background-color: #4CAF50;
-  color: white;
+  color: var(--main-color);
   padding: 14px 20px;
   border: none;
   cursor: pointer;
@@ -349,7 +368,7 @@ button:hover {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: #fff;
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -366,6 +385,18 @@ input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
+}
+
+.green-button {
+  background: green;
+  border: 1px solid white;
+  color: var(--main-color);
+}
+
+.red-button {
+  background: red;
+  border: 1px solid white;
+  color: var(--main-color);
 }
 
 @media (max-width: 768px) {

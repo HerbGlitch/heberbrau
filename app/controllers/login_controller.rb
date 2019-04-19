@@ -1,5 +1,7 @@
 class LoginController < ApplicationController
   def index
+    background_url('back_login.jpg')
+    linear_gradient('rgba(0,0,0,.5)', 'rgba(0,0,0,.8)')
   end
 
   def register

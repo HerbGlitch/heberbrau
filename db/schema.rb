@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_13_175837) do
+ActiveRecord::Schema.define(version: 2019_04_18_182603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,10 +42,20 @@ ActiveRecord::Schema.define(version: 2019_04_13_175837) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "campaing_slot"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "parties", force: :cascade do |t|
     t.bigint "party_member_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
     t.index ["party_member_id"], name: "index_parties_on_party_member_id"
   end
 

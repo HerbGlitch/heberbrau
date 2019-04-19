@@ -1,45 +1,3 @@
-.profile-background::before {
-  background-color: rgba(0,0,0,1);
-  background-image: url(asset-path('back_profile.jpg'));
-  background-image: linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.8)), url(asset-path('back_profile.jpg'));
-  background-size: cover;
-  background-blend-mode: luminosity;
-  min-height: 100vh;
-  background-attachment: fixed;
-  background-position: center;
-}
-
-body {
-  background-image: url(asset-path('back_profile_u.jpg'));
-  background-image: linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.8)), url(asset-path('back_profile_u.jpg'));
-  background-blend-mode: luminosity;
-  min-height: 100vh;
-  background-attachment: fixed;
-  background-position: center;
-}
-
-.profile-background-f {
-  background-color: rgba(0,0,0,1);
-  background-image: url(asset-path('back_friend_search.jpg'));
-  background-image: linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,.5)), url(asset-path('back_friend_search.jpg'));
-  background-size: cover;
-  background-blend-mode: luminosity;
-  min-height: 100vh;
-  background-attachment: fixed;
-  background-position: center;
-}
-
-.profile-background-c {
-  background-color: rgba(0,0,0,1);
-  background-image: url(asset-path('back_campaigns.jpg'));
-  background-image: linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,.5)), url(asset-path('back_campaigns.jpg'));
-  background-size: cover;
-  background-blend-mode: luminosity;
-  min-height: 100vh;
-  background-attachment: fixed;
-  background-position: center;
-}
-
 .profile-overlay {
   margin: 0;
   position: absolute;
@@ -50,8 +8,7 @@ body {
   width: 100%;
   transition: 1s ease;
   opacity:0;
-  color: white;
-  font-size: 20px;
+  color: var(--main-color);
   padding: 20px;
   text-align: center;
   font-size: .9em !important;
@@ -61,7 +18,7 @@ body {
   opacity: 1;
 }
 
-.profile-overlay-active {
+.profile-overlay-container {
   margin: 0;
   position: absolute;
   bottom: 0;
@@ -71,11 +28,34 @@ body {
   width: 100%;
   transition: 1s ease;
   opacity:1;
-  color: white;
+  color: var(--main-color);
   font-size: 20px;
   padding: 20px;
   text-align: center;
   font-size: .9em !important;
+  overflow-x: hidden;
+
+  h1 {
+    font-size: 1em;
+    padding: 10px;
+  }
+
+  .col-md-3 {
+    margin-right: -25%;
+  }
+
+  button {
+    width: 100%
+  }
+}
+
+.profile-overlay-active {
+  transition: 1s ease;
+}
+
+.profile-create-card:hover .profile-overlay-active {
+  max-width: 75%;
+  width: 75%;
 }
 
 .profile-campaings-box {
@@ -83,28 +63,24 @@ body {
 }
 
 .profile-h1 {
-  color: #fff;
+  color: var(--main-color);
 }
 
 .profile-create-card {
   margin: 20px;
-  color: #fff;
+  color: var(--main-color);
   border: 2px solid rgba(255, 255, 255, .7);
   transition: 1s;
   cursor: pointer;
   transform: scale(1);
   -webkit-transform: scale(1);
-  font-size: 2em;
+  font-size: var(--medium-font);
 }
 
 .profile-create-card:hover {
   border: 4px solid rgba(255, 255, 255, .7);
   transform: scale(1.05);
   -webkit-transform: scale(1.05);
-}
-
-.profile-create-card h1 {
-  font-size: 1.5em;
 }
 
 .profile-box {
@@ -137,7 +113,7 @@ body {
 
 .inputfile + label {
   width: 100%;
-  font-size: 4em;
+  font-size: var(--xl-font);
   text-align: center;
   padding-top: 28.125%;
   padding-bottom: 28.125%;
@@ -169,7 +145,7 @@ body {
   border: 1px solid #d4d4d4;
   border-bottom: none;
   border-top: none;
-  z-index: 99;
+  z-index: 5;
   /*position the autocomplete items to be the same width as the container:*/
   left: 0;
   right: 0;
@@ -202,7 +178,7 @@ input-focused {
   color: #000;
   float: right;
   background: transparent;
-  font-size: 2em;
+  font-size: var(--medium-font);
   transition: .6s;
   cursor: pointer;
   margin: 20px 20px 0 0;
@@ -245,7 +221,7 @@ input-focused {
 }
 
 #profile-add-campaign-plus {
-  font-size: 4em !important;
+  font-size: var(--xl-font) !important;
   height: 100%;
   position: absolute;
   top: 50%;
@@ -269,7 +245,7 @@ input-focused {
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
   color: #fff;
-  font-size: 2em;
+  font-size: --medium-font;
 }
 
 .profile-search input[type=text]:focus {

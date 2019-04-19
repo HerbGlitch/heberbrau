@@ -5,26 +5,27 @@
 
 .dm-create-card {
   margin: 20px;
-  color: #fff;
+  color: var(--main-color);
   border: 1px dashed #fff;
   transition: 1s;
   cursor: pointer;
   transform: scale(.9);
   -webkit-transform: scale(.9);
+
+  &:hover {
+    border: 4px solid #fff;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+
+  &h1 {
+    font-size: 10em;
+  }
 }
 
-.dm-create-card:hover {
-  border: 4px solid #fff;
-  transform: scale(1);
-  -webkit-transform: scale(1);
-}
-
-.dm-create-card h1 {
-  font-size: 10em;
-}
 
 .dm-card {
-  color: #fff;
+  color: var(--main-color);
   position: absolute !important;
   top: 50%;
   left: 50%;
@@ -32,39 +33,15 @@
   z-index: 2;
   overflow: hidden;
   text-align: center;
-}
 
-.dm-card a {
-  color: #fff;
-  transition: .6s;
-}
+  &a {
+    color: var(--main-color);
+    transition: .6s;
+  }
 
-.dm-card a:hover {
-  color: #999;
-}
-
-.dm-background {
-  background-color: rgba(0,0,0,1);
-  background-image: url(asset-path('back_dm.jpg'));
-  background-image: linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.8)), url(asset-path('back_dm.jpg'));
-  background-size: cover;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
-  background-blend-mode: luminosity;
-  min-height: 100vh;
-  overflow-y: hidden;
-}
-
-.dm-background-darker {
-  background-color: rgba(0,0,0,1);
-  background-image: url(asset-path('back_dm.jpg'));
-  background-image: linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,.9)), url(asset-path('back_dm.jpg'));
-  background-size: cover;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
-  background-blend-mode: luminosity;
-  min-height: 100vh;
-  overflow-y: hidden;
+  &a:hover {
+    color: #999;
+  }
 }
 
 #navbar{
@@ -75,13 +52,13 @@
   color: #000;
   float: right;
   background: transparent;
-  font-size: 2em;
+  font-size: var(--medium-font);
   transition: .6s;
   cursor: pointer;
-}
-
-#dashboard-modal-exit:hover {
-  color: #444 !important;
+  
+  &:hover {
+    color: #444 !important;
+  }
 }
 
 .dashboard-modal {

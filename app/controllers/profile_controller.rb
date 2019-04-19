@@ -1,20 +1,56 @@
 class ProfileController < ApplicationController
   def index
+    background_url('back_profile_u.jpg')
+    linear_gradient('rgba(0,0,0,.5)', 'rgba(0,0,0,.8)')
   end
 
   def profile
+    background_url('back_profile_u.jpg')
+    linear_gradient('rgba(0,0,0,.5)', 'rgba(0,0,0,.8)')
     @user = User.find_by_id(params[:id])
     @users = User.all()
     @campaigns = Campaign.where(:creator=>@user.id)
   end
 
   def campaigns
+    background_url('back_campaigns.jpg')
+    linear_gradient('rgba(0,0,0,.3)', 'rgba(0,0,0,.5)')
     @users = User.all()
     @campaigns = Campaign.where(:creator=>current_user.id)
   end
 
   def campaign
     @campaign = Campaign.find_by(:creator=>params[:uid], :slot=>params[:id])
+    if @campaign.image.url != nil
+      background_url(@campaign.image.url)
+    else
+      background_url('placeholder.jpg')
+    end
+    linear_gradient('rgba(0,0,0,.5)', 'rgba(0,0,0,.8)')
+  end
+
+  def friend_search
+    background_url('back_friend_search.jpg')
+    linear_gradient('rgba(0,0,0,.3)', 'rgba(0,0,0,.5)')
+    @users = User.all()
+  end
+
+  def parties
+    @parties = Parties.all()
+    background_url('back_parties.jpg')
+    linear_gradient('rgba(0,0,0,.3)', 'rgba(0,0,0,.5)')
+  end
+
+  def party
+    @party = Parties.find_by_id(params[:id])
+    @user = User.find_by_id(@party.party_member_id)
+    @users = User.all
+    if @party.image.url != nil
+      background_url(@party.image.url)
+    else
+      background_url('back_parties.jpg')
+    end
+    linear_gradient('rgba(0,0,0,.3)', 'rgba(0,0,0,.5)')
   end
 
   def create_campaign
@@ -31,8 +67,13 @@ class ProfileController < ApplicationController
     end
   end
 
-  def friend_search
-    @users = User.all
+  def create_party
+    @party = Parties.new()
+    if @party.save
+      redirect_to "/party/#{ @party.id }"
+    else
+      puts "dang"
+    end
   end
 
   def update_user
@@ -70,24 +111,9 @@ class ProfileController < ApplicationController
       if(params[:discription] != "" && params[:discription] != @campaign.description)
         @campaign.update_attribute(:description, params[:discription])
       end
-      puts "------------HERE--------------"
       redirect_to "/campaign/#{params[:uid]}/#{params[:id]}"
     else
       puts("update campaign broken")
     end
-  end
-
-  def following
-    @title = "Following"
-    @user  = User.find(params[:id])
-    @users = current_user.following.paginate(page: params[:page])
-    render 'show_follow'
-  end
-
-  def followers
-    @title = "Followers"
-    @user  = User.find(params[:id])
-    @users = current_user.followers.paginate(page: params[:page])
-    render 'show_follow'
   end
 end
